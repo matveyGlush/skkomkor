@@ -1,19 +1,24 @@
+"use client";
+
+import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 
 const navMainLinks = [
-  { label: "Agency", href: "#" },
-  { label: "Projects", href: "#" },
-  { label: "Immersion", href: "#" },
-  { label: "Contact", href: "#" },
+  { label: "Agency", href: "/agency" },
+  { label: "Projects", href: "/projects" },
+  { label: "Immersion", href: "/immersion" },
+  { label: "Contact", href: "/contact" },
 ];
 
 const navSecondaryLinks = [
-  { label: "News", href: "#" },
-  { label: "Socials", href: "#" },
+  { label: "News", href: "/news" },
+  { label: "Socials", href: "/socials" },
   { label: "EN", href: "#" },
 ];
 
 export function AppHeader() {
+  const pathname = usePathname();
+
   return (
     <header
       className={cn(
@@ -52,7 +57,7 @@ export function AppHeader() {
         </svg>
       </div>
 
-      {/* Hairline divider — currentColor inherits from header */}
+      {/* Hairline divider */}
       <div className="w-full h-px bg-current" />
 
       {/* Navigation row */}
@@ -62,15 +67,20 @@ export function AppHeader() {
       >
         {/* Left: primary links */}
         <div className="flex items-center gap-8">
-          {navMainLinks.map((link) => (
-            <a
-              key={link.label}
-              href={link.href}
-              className="font-[family-name:var(--font-maison-neue)] font-medium text-[19px] leading-none no-underline"
-            >
-              + {link.label}
-            </a>
-          ))}
+          {navMainLinks.map((link) => {
+            const isActive =
+              pathname === link.href ||
+              pathname.startsWith(link.href + "/");
+            return (
+              <a
+                key={link.label}
+                href={link.href}
+                className="font-[family-name:var(--font-maison-neue)] font-medium text-[19px] leading-none no-underline"
+              >
+                {isActive ? "■" : "+"} {link.label}
+              </a>
+            );
+          })}
         </div>
 
         {/* Right: secondary links */}
