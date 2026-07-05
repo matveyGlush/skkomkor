@@ -1,0 +1,53 @@
+@reference "../app/globals.css";
+
+.header {
+  @apply sticky top-0 left-0 right-0 p-2 bg-transparent text-white mix-blend-difference;
+  z-index: 1000;
+}
+
+.nav {
+  @apply flex items-center justify-between px-4 md:px-6;
+  height: 1.875rem;
+}
+
+.mobileBrand {
+  @apply md:hidden font-bold tracking-widest;
+  font-size: 13px;
+}
+
+.primaryLinks {
+  @apply hidden md:flex items-center gap-8;
+}
+
+.secondaryLinks {
+  @apply hidden md:flex items-center gap-8;
+}
+
+.navLink {
+  @apply font-medium leading-none no-underline;
+  font-family: var(--font-maison-neue);
+  font-size: 16px;
+}
+
+.hamburger {
+  @apply md:hidden flex items-center justify-center bg-transparent border-0 cursor-pointer text-white p-0;
+}
+
+.mobileMenu {
+  @apply fixed inset-0 flex flex-col;
+  background-color: #0b080d;
+  z-index: 999;
+}
+
+.mobileMenuInner {
+  @apply flex flex-col px-6 pb-12;
+  padding-top: 5rem;
+  gap: 2.5rem;
+}
+
+.mobileNavLink {
+  @apply text-white no-underline;
+  font-family: var(--font-maison-neue, sans-serif);
+  font-size: 2rem;
+  font-weight: 400;
+}

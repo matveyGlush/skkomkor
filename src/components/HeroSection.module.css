@@ -1,0 +1,64 @@
+@reference "../app/globals.css";
+
+.section {
+  @apply relative bg-white;
+  height: 73vh;
+}
+
+.carousel {
+  @apply absolute right-0 left-0;
+  top: 0;
+  height: 100%;
+}
+
+.slide {
+  @apply absolute inset-0 transition-opacity duration-700 ease-in-out overflow-hidden;
+}
+
+.parallaxLayer {
+  position: absolute;
+  top: -35%;
+  left: 0;
+  right: 0;
+  bottom: -35%;
+  will-change: transform;
+}
+
+.slideActive {
+  @apply opacity-100;
+}
+
+.slideHidden {
+  @apply opacity-0;
+}
+
+.tagline {
+  @apply absolute left-4;
+  top: 53%;
+}
+
+.taglineText {
+  @apply px-4 font-medium text-white;
+  font-family: "Maison Neue", sans-serif;
+  font-size: clamp(16px, 4.5vw, 24px);
+  line-height: 1.3;
+  max-width: min(27.5rem, calc(100vw - 2rem));
+}
+
+.smallImageContainer {
+  @apply absolute overflow-hidden;
+  bottom: -50px;
+  right: 10vw;
+  width: 33vw;
+  height: 32vh;
+  z-index: 1000;
+}
+
+.smallParallaxLayer {
+  position: absolute;
+  top: -35%;
+  left: 0;
+  right: 0;
+  bottom: -25%;
+  will-change: transform;
+}

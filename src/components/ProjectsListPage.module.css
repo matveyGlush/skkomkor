@@ -1,0 +1,128 @@
+.section {
+  background-color: #F7F1E9;
+  padding-top: 185px;
+}
+
+.projectItem {
+  display: flex;
+  border-bottom: 1px solid rgb(188, 181, 163);
+  padding: 15.75px 0;
+  gap: 15.75px;
+}
+
+.contentCol {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex: 0 0 50%;
+  height: 582px;
+}
+
+.head {
+  display: flex;
+  flex-direction: column;
+  padding-left: 140px;
+  gap: 39px;
+}
+
+.projectTitle {
+  font-family: "Canela", serif;
+  font-size: clamp(36px, 5.25vw, 76px);
+  font-weight: 300;
+  line-height: 1.1;
+  color: #111111;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 39px;
+}
+
+.tag {
+  font-family: "Maison Neue Mono", monospace;
+  font-size: 12.6px;
+  text-transform: uppercase;
+  color: #0b080d;
+}
+
+.bottom {
+  display: flex;
+  align-items: flex-end;
+  gap: 156px;
+}
+
+.thumbnail {
+  position: relative;
+  flex-shrink: 0;
+  overflow: hidden;
+  background-color: #bcb5a3;
+  width: 234px;
+  height: 234px;
+}
+
+.descWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 47px;
+  width: 205px;
+}
+
+.desc {
+  font-family: "Maison Neue Mono", monospace;
+  font-size: 12.6px;
+  line-height: 1.2;
+  text-transform: uppercase;
+  max-width: 228px;
+  color: #0b080d;
+}
+
+.cta {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid #0b080d;
+  gap: 7.875px;
+  padding: 7.875px;
+  text-decoration: none;
+}
+
+.ctaLabel {
+  font-family: "Maison Neue", sans-serif;
+  font-size: 7.875px;
+  line-height: 9.45px;
+  color: #0b080d;
+}
+
+.ctaIconWrapper {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  width: 31.5px;
+  height: 31.5px;
+}
+
+.ctaIconTrack {
+  display: flex;
+  flex-direction: column;
+  transition: transform 500ms cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.cta:hover .ctaIconTrack {
+  transform: translateY(-31.5px);
+}
+
+.ctaIconSlot {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 31.5px;
+  height: 31.5px;
+}
+
+.imageCol {
+  position: relative;
+  overflow: hidden;
+  background-color: #bcb5a3;
+  flex: 1 1 0;
+  height: 582px;
+}

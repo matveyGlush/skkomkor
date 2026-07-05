@@ -129,8 +129,7 @@
   }
   html {
     @apply font-sans;
-    /* Lenis smooth scroll support */
-    scroll-behavior: auto; /* Lenis overrides this */
+    scroll-behavior: auto;
   }
   body {
     @apply bg-background text-foreground;

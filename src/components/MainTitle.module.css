@@ -1,0 +1,34 @@
+@reference "../app/globals.css";
+
+.section {
+  z-index: 1000;
+}
+
+.inner {
+  @apply flex items-center justify-between px-4;
+}
+
+.title {
+  @apply font-bold;
+  font-family: "Maison Neue", sans-serif;
+  font-size: clamp(3rem, 12vw, 6rem);
+  line-height: 100%;
+}
+
+.subtitle {
+  @apply text-right pr-4;
+  font-family: "Maison Neue", sans-serif;
+  font-size: clamp(16px, 4.5vw, 24px);
+}
+
+@media (max-width: 640px) {
+  .subtitle {
+    font-size: clamp(14px, 4vw, 16px);
+  }
+}
+
+.divider {
+  @apply w-full;
+  height: 1px;
+  background-color: color-mix(in srgb, currentColor 10%, transparent);
+}

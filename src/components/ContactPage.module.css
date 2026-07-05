@@ -1,0 +1,111 @@
+.section {
+  background-color: #F7F1E9;
+  padding-top: 261.45px;
+  min-height: 100dvh;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: row;
+  gap: 94.5px;
+  margin: 0 15.75px;
+  position: relative;
+}
+
+.titleCol {
+  width: 280px;
+  flex-shrink: 0;
+  padding-left: 23.625px;
+}
+
+.title {
+  font-family: "Canela", serif;
+  font-size: 75.6px;
+  font-weight: 300;
+  line-height: 90.72px;
+  color: #0b080d;
+  margin: 0;
+}
+
+.smallImage {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 233.883px;
+  height: 233.883px;
+  overflow: hidden;
+}
+
+.contentCol {
+  flex: 1;
+  padding-left: 23.625px;
+  min-width: 0;
+}
+
+.description {
+  font-family: "Canela", serif;
+  font-size: 31.5px;
+  font-weight: 300;
+  line-height: 39.375px;
+  color: #111111;
+  margin: 0;
+}
+
+.contactLinks {
+  margin-top: 47.25px;
+  display: flex;
+  flex-direction: column;
+  gap: 3.9375px;
+}
+
+.contactLink {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  text-decoration: none;
+}
+
+.contactLinkLabel {
+  font-family: "Maison Neue", sans-serif;
+  font-size: 28.35px;
+  font-weight: 500;
+  color: #111111;
+}
+
+.addresses {
+  margin-top: 70.875px;
+  display: flex;
+  flex-direction: row;
+  gap: 63px;
+}
+
+.address {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.addressName {
+  font-family: "Maison Neue", sans-serif;
+  font-size: 15.75px;
+  font-weight: 400;
+  line-height: 18.9px;
+  color: #0b080d;
+}
+
+.addressLines {
+  font-family: "Maison Neue Mono", monospace;
+  font-size: 12.6px;
+  font-weight: 400;
+  line-height: 18.9px;
+  text-transform: uppercase;
+  color: #0b080d;
+  white-space: nowrap;
+}
+
+.portraitCol {
+  width: 382px;
+  flex-shrink: 0;
+  position: relative;
+  overflow: hidden;
+}

@@ -1,0 +1,140 @@
+@reference "../app/globals.css";
+
+.featuredProjectSection {
+  display: flex;
+  justify-content: center
+}
+
+.featuredProject {
+  @apply relative flex flex-col;
+  background-color: #f0ece4;
+  min-height: 400px;
+  width: 100%;
+  max-width: min(80vw, 1024px);
+}
+
+@media (min-width: 768px) {
+  .featuredProject {
+    min-height: 500px;
+  }
+}
+
+.featuredLeft {
+  @apply flex flex-col justify-between;
+  padding: 2rem;
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .featuredLeft {
+    padding: 4rem;
+    width: 40%;
+  }
+}
+
+.featuredTitle {
+  @apply mb-4 md:mb-6 leading-tight text-[#0b080d];
+  font-family: var(--font-maison, sans-serif);
+  font-size: clamp(26px, 5vw, 38px);
+  font-weight: 500;
+}
+
+.featuredMeta {
+  @apply flex flex-col gap-2 uppercase;
+  font-family: var(--font-maison-mono, monospace);
+  font-size: 13px;
+  letter-spacing: 0.05em;
+  color: rgba(11, 8, 13, 0.6);
+}
+
+.featuredCaption {
+  @apply mb-6 md:mb-8 uppercase leading-relaxed;
+  font-family: var(--font-maison-mono, monospace);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  color: #0b080d;
+  margin-top: 30px;
+}
+
+.featuredCta {
+  @apply inline-flex items-center gap-2 font-medium uppercase transition-opacity duration-200 hover:opacity-70 text-[#0b080d];
+  font-family: var(--font-maison, sans-serif);
+  font-size: 14px;
+  letter-spacing: 0.05em;
+}
+
+.featuredImage {
+  @apply absolute overflow-hidden;
+  top: 60px;
+  right: -100px;
+  width: 600px;
+  height: 380px;
+}
+
+.parallaxLayer {
+  position: absolute;
+  top: -10%;
+  left: 0;
+  right: 0;
+  bottom: -30%;
+  will-change: transform;
+}
+
+.listWrapper {
+  @apply flex;
+  padding-bottom: 30px;
+}
+
+.listCol {
+  @apply flex-1 py-8 md:py-12;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+@media (min-width: 768px) {
+  .listCol {
+    padding-left: 8rem;
+    padding-right: 8rem;
+  }
+}
+
+.projectRow {
+  @apply flex flex-col sm:flex-row sm:items-center sm:justify-between border-b py-4 md:py-5 transition-opacity duration-200 hover:opacity-70 gap-1 sm:gap-0;
+  cursor: pointer;
+  border-color: rgba(11, 8, 13, 0.12);
+}
+
+.projectName {
+  @apply text-[#0b080d];
+  font-family: var(--font-maison, sans-serif);
+  font-size: clamp(16px, 3vw, 20px);
+  font-weight: 500;
+}
+
+.projectMeta {
+  @apply flex items-center gap-4 md:gap-8;
+}
+
+.projectMetaText {
+  @apply uppercase;
+  font-family: var(--font-maison-mono, monospace);
+  font-size: 11px;
+  letter-spacing: 0.05em;
+  color: rgba(11, 8, 13, 0.6);
+}
+
+.projectArrow {
+  @apply text-[#0b080d];
+  font-size: 18px;
+}
+
+.allProjectsCta {
+  @apply pt-8 md:pt-10;
+}
+
+.allProjectsLink {
+  @apply inline-flex items-center gap-2 font-medium uppercase transition-opacity duration-200 hover:opacity-70 text-[#0b080d];
+  font-family: var(--font-maison, sans-serif);
+  font-size: 14px;
+  letter-spacing: 0.05em;
+}

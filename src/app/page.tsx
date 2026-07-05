@@ -5,10 +5,12 @@ import { ProjectsSection } from "@/components/ProjectsSection";
 import { VisionSection } from "@/components/VisionSection";
 import { InspirationSection } from "@/components/InspirationSection";
 import { Footer } from "@/components/Footer";
+import { MainTitle } from "@/components/MainTitle";
 
 export default function Home() {
   return (
     <>
+      <MainTitle />
       <AppHeader />
       <main>
         <HeroSection />

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { SmoothScrollProvider } from "@/components/SmoothScrollProvider";
 
 export const metadata: Metadata = {
   title: "Archidomo — Architecture Agency",
@@ -15,7 +16,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="h-full antialiased">
       <body className="min-h-full flex flex-col bg-white text-[#0b080d]">
-        {children}
+        <SmoothScrollProvider>{children}</SmoothScrollProvider>
       </body>
     </html>
   );

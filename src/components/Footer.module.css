@@ -1,0 +1,95 @@
+@reference "../app/globals.css";
+
+.footer {
+  @apply text-white py-16 px-4 md:px-6;
+  background-color: #111110;
+}
+
+.logo {
+  @apply mb-16 w-full;
+  color: #bcb5a3;
+}
+
+.grid {
+  @apply grid grid-cols-1 md:grid-cols-4 gap-12 mb-16;
+}
+
+.colLabel {
+  @apply uppercase mb-4;
+  font-family: "Maison Neue Mono", monospace;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.navList {
+  @apply space-y-3;
+}
+
+.navLink {
+  @apply text-white hover:opacity-60 transition-opacity block;
+  font-family: "Maison Neue", sans-serif;
+  font-size: 22px;
+  font-weight: 400;
+}
+
+.contactBlock {
+  @apply space-y-2 mb-8;
+}
+
+.contactPhone {
+  @apply text-white hover:opacity-60 transition-opacity block;
+  font-family: "Maison Neue", sans-serif;
+  font-size: 22px;
+  font-weight: 400;
+}
+
+.contactEmail {
+  @apply uppercase text-white hover:opacity-60 transition-opacity block;
+  font-family: "Maison Neue Mono", monospace;
+  font-size: 14px;
+  letter-spacing: 0.1em;
+}
+
+.socialsBlock {
+  @apply space-y-2;
+}
+
+.socialLink {
+  @apply uppercase text-white hover:opacity-60 transition-opacity block;
+  font-family: "Maison Neue Mono", monospace;
+  font-size: 14px;
+  letter-spacing: 0.1em;
+}
+
+.address {
+  @apply not-italic uppercase leading-[1.8] mb-8;
+  font-family: "Maison Neue Mono", monospace;
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.addressLast {
+  @apply not-italic uppercase leading-[1.8];
+  font-family: "Maison Neue Mono", monospace;
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.bottomBar {
+  @apply flex flex-col sm:flex-row sm:justify-between gap-2 uppercase;
+  font-family: "Maison Neue Mono", monospace;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.legalLinks {
+  @apply flex gap-6;
+}
+
+.legalLink {
+  @apply hover:opacity-80 transition-opacity;
+}

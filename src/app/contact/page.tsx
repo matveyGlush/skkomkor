@@ -1,6 +1,7 @@
 import { AppHeader } from "@/components/AppHeader";
 import { ContactPage } from "@/components/ContactPage";
 import { Footer } from "@/components/Footer";
+import { MainTitle } from "@/components/MainTitle";
 
 export const metadata = {
   title: "Archidomo — Contact",
@@ -9,6 +10,7 @@ export const metadata = {
 export default function Contact() {
   return (
     <>
+      <MainTitle />
       <AppHeader />
       <main>
         <ContactPage />

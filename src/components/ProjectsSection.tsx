@@ -1,141 +1,113 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
+import styles from "./ProjectsSection.module.css";
 
 const projects = [
-  { name: "Chalets Twin and brother", size: "800 M²", location: "COURCHEVEL" },
-  { name: "Villa Akila", size: "480 M²", location: "LAC D'ANNECY" },
-  { name: "Chalet Ultima", size: "2100 M²", location: "COURCHEVEL" },
-  { name: "Villa Gibson", size: "620 M²", location: "CANNES" },
-  { name: "Chalets NØR + SNØ", size: "420 M²", location: "COURCHEVEL" },
-  { name: "Villa Restanque", size: "450 M²", location: "NICE" },
-  { name: "Villa Verdi", size: "380 M²", location: "AIX EN PROVENCE" },
-  { name: "Chalet Haven", size: "310 M²", location: "MEGÈVE" },
-  { name: "Villa Mirador", size: "350 M²", location: "LAC DE GENÈVE" },
-  { name: "Chalet Arka", size: "320 M²", location: "MEGÈVE" },
-  { name: "Villa Seren", size: "360 M²", location: "LAC D'ANNECY" },
+  { name: "ЖК «Десяткино»", size: "ШТУКАТУРНЫЙ ФАСАД", location: "МУРИНО" },
+  { name: "ЖК «Виктория»", size: "ОКОННЫЕ КОНСТРУКЦИИ", location: "МУРИНО" },
+  { name: "ЖК «Актёрский Олимп»", size: "ФАСАДНЫЕ РАБОТЫ", location: "ВЫБОРГСКИЙ Р-Н" },
+  { name: "Бассейн ВИФК (СКА)", size: "ОСТЕКЛЕНИЕ", location: "САНКТ-ПЕТЕРБУРГ" },
+  { name: "ЖК Дом на Школьной", size: "ФАСАД, ОКНА", location: "ШУШАРЫ" },
+  { name: "ЖК «Мой Город»", size: "АЛЮ. КОНСТРУКЦИИ", location: "ДЕВЯТКИНО" },
+  { name: "ЖК Парколa", size: "ФАСАД, ОСТЕКЛЕНИЕ", location: "ПАРНАС" },
+  { name: "ЖК «Австрийский Квартал»", size: "ШТУКАТУРНЫЙ ФАСАД", location: "КУДРОВО" },
+  { name: "Военно-Медицинская Академия", size: "ФАСАДНЫЕ РАБОТЫ", location: "САНКТ-ПЕТЕРБУРГ" },
+  { name: "ЖК «Три Ветра»", size: "ФАСАДНЫЕ РАБОТЫ", location: "САНКТ-ПЕТЕРБУРГ" },
+  { name: "ЖК UP-квартал Светлановский", size: "ФАСАДНЫЕ РАБОТЫ", location: "САНКТ-ПЕТЕРБУРГ" },
 ];
 
 export function ProjectsSection() {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+  const sectionRef = useRef<HTMLDivElement | null>(null);
+  const imageContainerRef = useRef<HTMLDivElement | null>(null);
+  const parallaxRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const rect = sectionRef.current?.getBoundingClientRect();
+      if (!rect) return;
+      if (imageContainerRef.current) {
+        imageContainerRef.current.style.transform = `translateY(${rect.top * 0.12}px)`;
+      }
+      if (parallaxRef.current) {
+        parallaxRef.current.style.transform = `translateY(${rect.top * 0.1}px)`;
+      }
+    };
+    handleScroll();
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
-    <section>
+    <section className={styles.featuredProjectSection}>
       {/* Featured Project */}
-      <div className="flex min-h-[500px] bg-[#f0ece4]">
-        {/* Left: project info */}
-        <div className="flex w-[40%] flex-col justify-between p-16">
-          {/* Top: title + meta */}
+      <div className={styles.featuredProject} ref={sectionRef}>
+        <div className={styles.featuredLeft}>
           <div>
-            <h2
-              className="mb-6 text-[38px] leading-tight text-[#0b080d]"
-              style={{ fontWeight: 500, fontFamily: "var(--font-maison, sans-serif)" }}
-            >
-              Villa Elektra
-            </h2>
-            <div
-              className="flex flex-col gap-2 text-[13px] uppercase tracking-[0.05em] text-[rgba(11,8,13,0.6)]"
-              style={{ fontFamily: "var(--font-maison-mono, monospace)" }}
-            >
-              <span>[ 1150 M² ]</span>
-              <span>[ LAKE GENEVA ]</span>
-              <span>[ 2025 ]</span>
+            <h2 className={styles.featuredTitle}>ЖК «Триумф Парк»</h2>
+            <div className={styles.featuredMeta}>
+              <span>[ ШТУКАТУРНЫЙ ФАСАД ]</span>
+              <span>[ ВИТРАЖНОЕ ОСТЕКЛЕНИЕ ]</span>
+              <span>[ ПУЛКОВСКОЕ ШОССЕ ]</span>
             </div>
           </div>
 
-          {/* Bottom: caption + CTA */}
           <div>
-            <p
-              className="mb-8 text-[11px] uppercase leading-relaxed tracking-[0.08em] text-[#0b080d]"
-              style={{ fontFamily: "var(--font-maison-mono, monospace)" }}
-            >
-              WITH VILLA ELEKTRA,
+            <p className={styles.featuredCaption}>
+              ФАСАДНЫЕ РАБОТЫ,
               <br />
-              ARCHIDOMO PERFORMS A
+              ОКОННЫЕ И ДВЕРНЫЕ БЛОКИ,
               <br />
-              MAJESTIC SLEIGHT OF HAND.
+              ВИТРАЖНОЕ ОСТЕКЛЕНИЕ.
             </p>
-            <a
-              href="#"
-              className="inline-flex items-center gap-2 text-[14px] font-medium uppercase tracking-[0.05em] text-[#0b080d] transition-opacity duration-200 hover:opacity-70"
-              style={{ fontFamily: "var(--font-maison, sans-serif)" }}
-            >
-              SEE PROJECT
+            <a href="/projects" className={styles.featuredCta}>
+              ПОДРОБНЕЕ
               <span aria-hidden="true">→</span>
             </a>
           </div>
         </div>
 
-        {/* Right: hero image */}
-        <div className="relative w-[60%]">
-          <Image
-            src="/images/hero-2.jpg"
-            fill
-            className="object-cover"
-            alt="Villa Elektra"
-          />
-        </div>
-      </div>
-
-      {/* Project List */}
-      <div className="flex bg-white">
-        {/* List column */}
-        <div className="flex-1 px-16 py-12">
-          {projects.map((project, index) => (
-            <a
-              key={project.name}
-              href="#"
-              className="flex cursor-pointer items-center justify-between border-b border-[rgba(11,8,13,0.12)] py-5 transition-opacity duration-200 hover:opacity-70"
-              onMouseEnter={() => setHoveredIndex(index)}
-              onMouseLeave={() => setHoveredIndex(null)}
-            >
-              <span
-                className="text-[24px] text-[#0b080d]"
-                style={{ fontWeight: 500, fontFamily: "var(--font-maison, sans-serif)" }}
-              >
-                {project.name}
-              </span>
-              <div className="flex items-center gap-8">
-                <span
-                  className="text-[12px] uppercase tracking-[0.05em] text-[rgba(11,8,13,0.6)]"
-                  style={{ fontFamily: "var(--font-maison-mono, monospace)" }}
-                >
-                  {project.size}&nbsp;&nbsp;{project.location}
-                </span>
-                <span
-                  className="text-[18px] text-[#0b080d]"
-                  aria-hidden="true"
-                >
-                  ↗
-                </span>
-              </div>
-            </a>
-          ))}
-
-          {/* CTA row */}
-          <div className="pt-10">
-            <a
-              href="#"
-              className="inline-flex items-center gap-2 text-[14px] font-medium uppercase tracking-[0.05em] text-[#0b080d] transition-opacity duration-200 hover:opacity-70"
-              style={{ fontFamily: "var(--font-maison, sans-serif)" }}
-            >
-              ALL PROJECTS
-              <span aria-hidden="true">→</span>
-            </a>
-          </div>
-        </div>
-
-        {/* Hover image panel */}
-        <div className="relative hidden w-[45%] md:block">
-          {hoveredIndex !== null && (
+        <div className={styles.featuredImage} ref={imageContainerRef}>
+          <div ref={parallaxRef} className={styles.parallaxLayer}>
             <Image
-              src="/images/hero-1.jpg"
+              src="/images/hero-2.jpg"
               fill
               className="object-cover"
-              alt=""
+              alt="Villa Elektra"
             />
-          )}
+          </div>
+        </div>
+
+        {/* Project List */}
+        <div className={styles.listWrapper}>
+          <div className={styles.listCol}>
+            {projects.map((project, index) => (
+              <a
+                key={project.name}
+                href="#"
+                className={styles.projectRow}
+                onMouseEnter={() => setHoveredIndex(index)}
+                onMouseLeave={() => setHoveredIndex(null)}
+              >
+                <span className={styles.projectName}>{project.name}</span>
+                <div className={styles.projectMeta}>
+                  <span className={styles.projectMetaText}>
+                    {project.size}&nbsp;&nbsp;{project.location}
+                  </span>
+                  <span className={styles.projectArrow} aria-hidden="true">↗</span>
+                </div>
+              </a>
+            ))}
+
+            <div className={styles.allProjectsCta}>
+              <a href="/projects" className={styles.allProjectsLink}>
+                ВСЕ ПРОЕКТЫ
+                <span aria-hidden="true">→</span>
+              </a>
+            </div>
+          </div>
         </div>
       </div>
     </section>
