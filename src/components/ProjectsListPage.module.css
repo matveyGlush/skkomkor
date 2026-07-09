@@ -1,33 +1,64 @@
 .section {
   background-color: #F7F1E9;
-  padding-top: 185px;
+  padding-top: 96px;
+}
+
+@media (min-width: 768px) {
+  .section {
+    padding-top: 85px;
+  }
 }
 
 .projectItem {
   display: flex;
+  flex-direction: column;
   border-bottom: 1px solid rgb(188, 181, 163);
-  padding: 15.75px 0;
-  gap: 15.75px;
+  padding: 24px 16px;
+  gap: 24px;
+}
+
+@media (min-width: 768px) {
+  .projectItem {
+    flex-direction: row;
+    padding: 15px;
+    gap: 15.75px;
+  }
 }
 
 .contentCol {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  flex: 0 0 50%;
-  height: 582px;
+  gap: 24px;
+  order: 2;
+}
+
+@media (min-width: 768px) {
+  .contentCol {
+    flex: 0 0 50%;
+    height: 532px;
+    gap: 0;
+    order: 0;
+  }
 }
 
 .head {
   display: flex;
   flex-direction: column;
-  padding-left: 140px;
-  gap: 39px;
+  gap: 16px;
+}
+
+@media (min-width: 768px) {
+  .head {
+    padding-left: 140px;
+    padding-top: 50px;
+    gap: 39px;
+  }
 }
 
 .projectTitle {
-  font-family: "Canela", serif;
-  font-size: clamp(36px, 5.25vw, 76px);
+  font-family: "Maison Neue", sans-serif;
+  font-size: clamp(36px, 4.25vw, 56px);
   font-weight: 300;
   line-height: 1.1;
   color: #111111;
@@ -36,7 +67,13 @@
 .tags {
   display: flex;
   flex-wrap: wrap;
-  gap: 0 39px;
+  gap: 8px 16px;
+}
+
+@media (min-width: 768px) {
+  .tags {
+    gap: 0 39px;
+  }
 }
 
 .tag {
@@ -48,8 +85,16 @@
 
 .bottom {
   display: flex;
-  align-items: flex-end;
-  gap: 156px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 24px;
+}
+
+@media (min-width: 768px) {
+  .bottom {
+    flex-direction: row;
+    gap: 156px;
+  }
 }
 
 .thumbnail {
@@ -57,15 +102,31 @@
   flex-shrink: 0;
   overflow: hidden;
   background-color: #bcb5a3;
-  width: 234px;
-  height: 234px;
+  width: 140px;
+  height: 140px;
+}
+
+@media (min-width: 768px) {
+  .thumbnail {
+    width: 234px;
+    height: 234px;
+  }
 }
 
 .descWrapper {
   display: flex;
   flex-direction: column;
-  gap: 47px;
-  width: 205px;
+  gap: 24px;
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .descWrapper {
+    gap: 47px;
+    width: 205px;
+    height: 100%;
+    justify-content: space-between;
+  }
 }
 
 .desc {
@@ -78,27 +139,58 @@
 }
 
 .cta {
+  position: relative;
   display: inline-flex;
   align-items: center;
+  justify-content: space-between;
   border: 1px solid #0b080d;
   gap: 7.875px;
   padding: 7.875px;
+  overflow: hidden;
   text-decoration: none;
 }
 
+.cta::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: #0b080d;
+  transform: translateY(100%);
+  transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+  z-index: 0;
+}
+
+.cta:hover::before {
+  transform: translateY(0);
+}
+
 .ctaLabel {
+  position: relative;
+  z-index: 1;
   font-family: "Maison Neue", sans-serif;
-  font-size: 7.875px;
+  font-size: 10px;
   line-height: 9.45px;
   color: #0b080d;
+  transition: color 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.cta:hover .ctaLabel {
+  color: #fff;
 }
 
 .ctaIconWrapper {
   position: relative;
+  z-index: 1;
   display: block;
   overflow: hidden;
   width: 31.5px;
   height: 31.5px;
+  background-color: #0b080d;
+  transition: background-color 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.cta:hover .ctaIconWrapper {
+  background-color: #fff;
 }
 
 .ctaIconTrack {
@@ -117,12 +209,34 @@
   justify-content: center;
   width: 31.5px;
   height: 31.5px;
+  color: #fff;
+  transition: color 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.cta:hover .ctaIconSlot {
+  color: #0b080d;
 }
 
 .imageCol {
   position: relative;
   overflow: hidden;
   background-color: #bcb5a3;
-  flex: 1 1 0;
-  height: 582px;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  order: 1;
+}
+
+@media (min-width: 768px) {
+  .imageCol {
+    flex: 1 1 0;
+    width: auto;
+    aspect-ratio: auto;
+    height: 532px;
+    order: 0;
+  }
+}
+
+.parallaxImage {
+  transform: translateY(var(--parallax-y, 0px)) scale(1.15);
+  will-change: transform;
 }

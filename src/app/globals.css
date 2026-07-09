@@ -4,7 +4,7 @@
 
 @custom-variant dark (&:is(.dark *));
 
-/* ── Archidomo Self-Hosted Fonts ─────────────────────────────── */
+/* ── Skkomkor Self-Hosted Fonts ─────────────────────────────── */
 @font-face {
   font-family: "Maison Neue";
   src: url("/fonts/maison-neue-regular.woff2") format("woff2");
@@ -84,7 +84,7 @@
   --font-maison-neue-mono: "Maison Neue Mono", monospace;
   --font-canela: "Canela", serif;
 
-  /* ── Archidomo Brand Colors ── */
+  /* ── Skkomkor Brand Colors ── */
   --color-ink: #0b080d;          /* rgb(11, 8, 13) — near black primary text */
   --color-white: #ffffff;
   --color-taupe: #bcb5a3;        /* rgb(188, 181, 163) — inspiration section bg */
@@ -92,7 +92,7 @@
   --color-footer-bg: #111110;   /* dark footer background */
   --color-divider: rgba(11, 8, 13, 0.12);
 
-  /* ── shadcn tokens mapped to Archidomo palette ── */
+  /* ── shadcn tokens mapped to Skkomkor palette ── */
   --background: #ffffff;
   --foreground: #0b080d;
   --card: #ffffff;
@@ -189,7 +189,7 @@ html.lenis {
   transform: translateY(0);
 }
 
-/* ── Archidomo specific nav plus prefix ──────────────────────── */
+/* ── Skkomkor specific nav plus prefix ──────────────────────── */
 .nav-link-plus::before {
   content: "+ ";
   opacity: 0.7;

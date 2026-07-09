@@ -4,7 +4,7 @@ import { Footer } from "@/components/Footer";
 import { MainTitle } from "@/components/MainTitle";
 
 export const metadata = {
-  title: "Archidomo — Contact",
+  title: "Skkomkor — Contact",
 };
 
 export default function Contact() {

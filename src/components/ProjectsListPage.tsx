@@ -1,106 +1,20 @@
 "use client";
 
+import { useEffect, useRef } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { ArrowUpRightSmIcon } from "@/components/icons";
+import type { Project } from "@/types/project";
 import styles from "./ProjectsListPage.module.css";
 
-interface Project {
-  title: string;
-  tags: string[];
-  desc: string;
-  slug: string;
+function truncate(text: string, maxLength: number) {
+  if (text.length <= maxLength) return text;
+  return `${text.slice(0, maxLength).trimEnd()}...`;
 }
 
-const projects: Project[] = [
-  {
-    slug: "triumf-park",
-    title: "ЖК «Триумф Парк»",
-    tags: ["[ ШТУКАТУРНЫЙ ФАСАД ]", "[ ВИТРАЖНОЕ ОСТЕКЛЕНИЕ ]", "[ ПУЛКОВСКОЕ ШОССЕ ]"],
-    desc: "ШТУКАТУРНЫЕ ФАСАДНЫЕ РАБОТЫ, МОНТАЖ ОКОННЫХ И ДВЕРНЫХ БЛОКОВ, ВИТРАЖНОЕ ОСТЕКЛЕНИЕ.",
-  },
-  {
-    slug: "desyatkino",
-    title: "ЖК «Десяткино»",
-    tags: ["[ ШТУКАТУРНЫЙ ФАСАД ]", "[ ОКОННЫЕ БЛОКИ ]", "[ МУРИНО ]"],
-    desc: "ШТУКАТУРНЫЕ ФАСАДНЫЕ РАБОТЫ, МОНТАЖ ОКОННЫХ И ДВЕРНЫХ БЛОКОВ.",
-  },
-  {
-    slug: "viktoriya",
-    title: "ЖК «Виктория»",
-    tags: ["[ ОКОННЫЕ КОНСТРУКЦИИ ]", "[ МУРИНО ]"],
-    desc: "МОНТАЖ ОКОННЫХ И ДВЕРНЫХ БЛОКОВ.",
-  },
-  {
-    slug: "aktiorsky-olimp",
-    title: "ЖК «Актёрский Олимп»",
-    tags: ["[ ФАСАДНЫЕ РАБОТЫ ]", "[ ВЫБОРГСКИЙ Р-Н ]"],
-    desc: "ФАСАДНЫЕ РАБОТЫ НА ЖИЛОМ КОМПЛЕКСЕ В ВЫБОРГСКОМ РАЙОНЕ САНКТ-ПЕТЕРБУРГА.",
-  },
-  {
-    slug: "bassein-vifk",
-    title: "Бассейн ВИФК (СКА)",
-    tags: ["[ ВИТРАЖНОЕ ОСТЕКЛЕНИЕ ]", "[ ОКОННЫЕ БЛОКИ ]", "[ САНКТ-ПЕТЕРБУРГ ]"],
-    desc: "МОНТАЖ ОКОННЫХ И ДВЕРНЫХ БЛОКОВ, ВИТРАЖНОЕ ОСТЕКЛЕНИЕ СПОРТИВНОГО ОБЪЕКТА.",
-  },
-  {
-    slug: "dom-na-shkolnoy",
-    title: "ЖК Дом на Школьной",
-    tags: ["[ АЛЮ. И СТ. КОНСТРУКЦИИ ]", "[ ШТУКАТУРНЫЙ ФАСАД ]", "[ ШУШАРЫ ]"],
-    desc: "АЛЮМИНИЕВЫЕ И СТАЛЬНЫЕ КАРКАСНЫЕ КОНСТРУКЦИИ, ШТУКАТУРНЫЙ ФАСАД, ОКОННЫЕ БЛОКИ.",
-  },
-  {
-    slug: "moy-gorod",
-    title: "ЖК «Мой Город»",
-    tags: ["[ АЛЮМИНИЕВЫЕ КОНСТРУКЦИИ ]", "[ ОКОННЫЕ БЛОКИ ]", "[ ДЕВЯТКИНО ]"],
-    desc: "АЛЮМИНИЕВЫЕ КОНСТРУКЦИИ, МОНТАЖ ОКОННЫХ И ДВЕРНЫХ БЛОКОВ.",
-  },
-  {
-    slug: "parkola",
-    title: "ЖК Парколa",
-    tags: ["[ ФАСАД, ОСТЕКЛЕНИЕ ]", "[ ОГРАЖДЕНИЯ ]", "[ ПАРНАС ]"],
-    desc: "ШТУКАТУРНЫЙ ФАСАД, ОКОННЫЕ БЛОКИ, ВИТРАЖИ, ОГРАЖДЕНИЯ, СТАЛЬНЫЕ КОЗЫРЬКИ.",
-  },
-  {
-    slug: "kadetskoe-uchilishche",
-    title: "Петрозаводское кадетское училище",
-    tags: ["[ ФАСАДНЫЕ РАБОТЫ ]", "[ ПЕТРОЗАВОДСК ]"],
-    desc: "ФАСАДНЫЕ РАБОТЫ НА ПЕТРОЗАВОДСКОМ ПРЕЗИДЕНТСКОМ КАДЕТСКОМ УЧИЛИЩЕ.",
-  },
-  {
-    slug: "avstriysky-kvartal",
-    title: "ЖК «Австрийский Квартал»",
-    tags: ["[ ШТУКАТУРНЫЙ ФАСАД ]", "[ КУДРОВО ]"],
-    desc: "ШТУКАТУРНЫЕ ФАСАДНЫЕ РАБОТЫ НА ЖИЛОМ КОМПЛЕКСЕ В КУДРОВО.",
-  },
-  {
-    slug: "voenny-med-akademiya",
-    title: "Военно-Медицинская Академия",
-    tags: ["[ ФАСАДНЫЕ РАБОТЫ ]", "[ САНКТ-ПЕТЕРБУРГ ]"],
-    desc: "ФАСАДНЫЕ РАБОТЫ НА ОБЪЕКТЕ ВОЕННО-МЕДИЦИНСКОЙ АКАДЕМИИ.",
-  },
-  {
-    slug: "tri-vetra",
-    title: "ЖК «Три Ветра»",
-    tags: ["[ ФАСАДНЫЕ РАБОТЫ ]", "[ САНКТ-ПЕТЕРБУРГ ]"],
-    desc: "ФАСАДНЫЕ РАБОТЫ НА ЖИЛОМ КОМПЛЕКСЕ «ТРИ ВЕТРА».",
-  },
-  {
-    slug: "okhta-park",
-    title: "Охта Парк",
-    tags: ["[ ФАСАДНЫЕ РАБОТЫ ]", "[ САНКТ-ПЕТЕРБУРГ ]"],
-    desc: "ФАСАДНЫЕ РАБОТЫ НА ОБЪЕКТЕ ОХТА ПАРК.",
-  },
-  {
-    slug: "up-svetlanovsky",
-    title: "ЖК UP-квартал Светлановский",
-    tags: ["[ ФАСАДНЫЕ РАБОТЫ ]", "[ САНКТ-ПЕТЕРБУРГ ]"],
-    desc: "ФАСАДНЫЕ РАБОТЫ НА ЖИЛОМ КОМПЛЕКСЕ UP-КВАРТАЛ СВЕТЛАНОВСКИЙ.",
-  },
-];
-
-function ProjectCta() {
+function ProjectCta({ href }: { href: string }) {
   return (
-    <a href="#" className={styles.cta}>
+    <Link href={href} className={styles.cta}>
       <span className={styles.ctaLabel}>ПОДРОБНЕЕ</span>
       <span className={styles.ctaIconWrapper}>
         <span className={styles.ctaIconTrack}>
@@ -112,16 +26,28 @@ function ProjectCta() {
           </span>
         </span>
       </span>
-    </a>
+    </Link>
   );
 }
 
-function ProjectItem({ project }: { project: Project }) {
+function ProjectItem({
+  project,
+  thumbnailRef,
+  imageRef,
+}: {
+  project: Project;
+  thumbnailRef: (el: HTMLImageElement | null) => void;
+  imageRef: (el: HTMLImageElement | null) => void;
+}) {
+  const href = `/projects/${project.slug}`;
+
   return (
     <div className={styles.projectItem}>
       <div className={styles.contentCol}>
         <div className={styles.head}>
-          <h2 className={styles.projectTitle}>{project.title}</h2>
+          <Link href={href}>
+            <h2 className={styles.projectTitle}>{project.title}</h2>
+          </Link>
           <div className={styles.tags}>
             {project.tags.map((tag) => (
               <span key={tag} className={styles.tag}>{tag}</span>
@@ -130,41 +56,103 @@ function ProjectItem({ project }: { project: Project }) {
         </div>
 
         <div className={styles.bottom}>
-          <div className={styles.thumbnail}>
-            <Image
-              src={`/images/projects/${project.slug}-thumb.jpg`}
-              fill
-              sizes="234px"
-              className="object-cover"
-              alt={project.title}
-            />
-          </div>
+          <Link href={href} className={styles.thumbnail}>
+            {project.imageThumbUrl && (
+              <Image
+                ref={thumbnailRef}
+                src={project.imageThumbUrl}
+                fill
+                unoptimized
+                sizes="(min-width: 768px) 234px, 140px"
+                className={`object-cover ${styles.parallaxImage}`}
+                alt={project.title}
+              />
+            )}
+          </Link>
 
           <div className={styles.descWrapper}>
-            <p className={styles.desc}>{project.desc}</p>
-            <ProjectCta />
+            <p className={styles.desc}>{truncate(project.description, 120)}</p>
+            <ProjectCta href={href} />
           </div>
         </div>
       </div>
 
-      <div className={styles.imageCol}>
-        <Image
-          src={`/images/projects/${project.slug}-large.jpg`}
-          fill
-          sizes="50vw"
-          className="object-cover"
-          alt=""
-        />
-      </div>
+      <Link href={href} className={styles.imageCol}>
+        {project.images[0] && (
+          <Image
+            ref={imageRef}
+            src={project.images[0].url}
+            fill
+            unoptimized
+            sizes="(min-width: 768px) 50vw, 100vw"
+            className={`object-cover ${styles.parallaxImage}`}
+            alt=""
+          />
+        )}
+      </Link>
     </div>
   );
 }
 
-export function ProjectsListPage() {
+export function ProjectsListPage({ projects }: { projects: Project[] }) {
+  const imageRefs = useRef<(HTMLImageElement | null)[]>([]);
+  const thumbnailRefs = useRef<(HTMLImageElement | null)[]>([]);
+
+  useEffect(() => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+    let ticking = false;
+
+    const applyParallax = (
+      els: (HTMLImageElement | null)[],
+      speed: number,
+      viewportCenter: number,
+    ) => {
+      for (const el of els) {
+        if (!el) continue;
+        const rect = el.getBoundingClientRect();
+        const elCenter = rect.top + rect.height / 2;
+        const offset = (viewportCenter - elCenter) * speed;
+        el.style.setProperty("--parallax-y", `${offset}px`);
+      }
+    };
+
+    const update = () => {
+      const viewportCenter = window.innerHeight / 2;
+      applyParallax(imageRefs.current, 0.08, viewportCenter);
+      applyParallax(thumbnailRefs.current, 0.04, viewportCenter);
+      ticking = false;
+    };
+
+    const onScroll = () => {
+      if (!ticking) {
+        ticking = true;
+        requestAnimationFrame(update);
+      }
+    };
+
+    update();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+    };
+  }, []);
+
   return (
     <section className={styles.section}>
-      {projects.map((project) => (
-        <ProjectItem key={project.slug} project={project} />
+      {projects.map((project, index) => (
+        <ProjectItem
+          key={project.slug}
+          project={project}
+          thumbnailRef={(el) => {
+            thumbnailRefs.current[index] = el;
+          }}
+          imageRef={(el) => {
+            imageRefs.current[index] = el;
+          }}
+        />
       ))}
     </section>
   );

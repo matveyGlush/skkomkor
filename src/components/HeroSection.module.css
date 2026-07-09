@@ -9,6 +9,11 @@
   @apply absolute right-0 left-0;
   top: 0;
   height: 100%;
+  box-shadow: 40px 50px 67px 15px rgba(34, 60, 80, 0.49) inset;
+}
+
+.textShadow {
+  display: none;
 }
 
 .slide {
@@ -35,6 +40,7 @@
 .tagline {
   @apply absolute left-4;
   top: 53%;
+  z-index: 2;
 }
 
 .taglineText {
@@ -51,7 +57,7 @@
   right: 10vw;
   width: 33vw;
   height: 32vh;
-  z-index: 1000;
+  z-index: 1;
 }
 
 .smallParallaxLayer {
@@ -61,4 +67,24 @@
   right: 0;
   bottom: -25%;
   will-change: transform;
+}
+
+@media (max-width: 768px) {
+  .textShadow {
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    font-size: 20px;
+    background-color: rgba(29, 33, 36, 0.49);
+    z-index: 1;
+  }
+
+  .tagline {
+    top: 43%;
+  }
+
+  .smallImageContainer {
+    width: 43vw;
+  }
 }

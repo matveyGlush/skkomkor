@@ -1,7 +1,23 @@
 @reference "../app/globals.css";
 
 .section {
-  @apply bg-white py-24 px-4 md:px-6;
+  @apply relative flex flex-col items-center bg-white py-16 md:py-24 px-4 relative overflow-hidden;
+  padding-bottom: 120px;
+}
+
+@media (min-width: 1090px) {
+  .section {
+    padding-left: 20vw;
+    padding-bottom: 240px;
+  }
+}
+
+.circle {
+  @apply absolute -right-48 top-1/4 w-150 h-150 rounded-full border border-[#0b080d]/10 pointer-events-none;
+}
+
+.circle_2 {
+  @apply absolute -left-68 bottom-1/4 w-150 h-150 rounded-full border border-[#0b080d]/12 pointer-events-none;
 }
 
 .row1 {
@@ -9,17 +25,26 @@
 }
 
 .heading {
-  @apply text-[#0b080d] leading-none mb-8 md:mb-0 shrink-0;
+  @apply absolute text-[#0b080d] leading-none tracking-tight font-light mb-8 md:mb-0 shrink-0;
+  top: 24px;
+  left: 16px;
   font-family: "Maison Neue", sans-serif;
-  font-weight: 300;
-  font-size: clamp(48px, 6vw, 80px);
+  font-size: clamp(2.5rem, 4vw, 5rem);
+}
+
+@media (min-width: 1090px) {
+  .heading {
+    top: 95px;
+    left: 100px;
+  }
 }
 
 .body {
-  @apply text-[#0b080d] leading-relaxed max-w-[540px];
+  @apply text-[#0b080d] leading-relaxed;
   font-family: "Maison Neue", sans-serif;
-  font-size: clamp(16px, 4.5vw, 24px);
+  font-size: clamp(16px, 2.5vw, 20px);
   font-weight: 400;
+  max-width: 100%;
 }
 
 @media (max-width: 640px) {
@@ -28,30 +53,92 @@
   }
 }
 
-.imageGrid {
-  @apply grid grid-cols-1 md:grid-cols-2 gap-4;
+@media (min-width: 1090px) {
+  .body {
+    max-width: 50vw;
+  }
 }
 
-.imagePlaceholder1 {
-  @apply aspect-[4/3];
+.imageGrid {
+  @apply flex justify-center gap-2.5;
+  width: 100%;
+  max-width: 100%;
+  height: 45vh;
+}
+
+@media (min-width: 1090px) {
+  .imageGrid {
+    max-width: 50vw;
+    height: 65vh;
+  }
+}
+
+.imageContainer1,
+.imageContainer2 {
+  position: relative;
+  overflow: hidden;
+  flex: 1 1 0;
+  height: 100%;
+}
+
+.imageContainer1 {
   background-color: #c8c2ba;
 }
 
-.imagePlaceholder2 {
-  @apply aspect-[4/3];
+.imageContainer2 {
   background-color: #222;
 }
 
+@media (min-width: 768px) {
+  .imageContainer1,
+  .imageContainer2 {
+    flex: none;
+    width: 25vw;
+  }
+}
+
+.parallaxImage {
+  transform: translateY(var(--parallax-y, 0px)) scale(1.15);
+  will-change: transform;
+}
+
 .row3 {
-  @apply mt-16 flex flex-col md:flex-row md:items-start md:justify-between gap-8;
+  @apply absolute;
+  bottom: 40%;
+  left: 16px;
+  right: 16px;
+}
+
+@media (min-width: 768px) {
+  .row3 {
+    left: 100px;
+    right: auto;
+  }
 }
 
 .caption {
-  @apply uppercase leading-[1.8];
+  @apply relative uppercase leading-[1.8];
   font-family: "Maison Neue Mono", monospace;
   font-size: 11px;
   letter-spacing: 0.08em;
   color: rgba(11, 8, 13, 0.7);
+}
+
+.captionPlus {
+  position: absolute;
+  background-color: #0b080d;
+  height: 1px;
+  width: 15px;
+  top: -18px;
+}
+
+.captionPlus::before {
+  content: "";
+  position: absolute;
+  background-color: #0b080d;
+  height: 1px;
+  width: 15px;
+  transform: rotate(90deg);
 }
 
 .cta {
@@ -63,11 +150,52 @@
 }
 
 .taglineWrapper {
-  @apply mt-16 max-w-xl;
+  @apply mt-16;
+  position: absolute;
+  bottom: 24px;
+  left: 16px;
+  right: 16px;
+}
+
+@media (min-width: 1090px) {
+  .taglineWrapper {
+    bottom: 50px;
+    left: 100px;
+    right: auto;
+  }
+}
+
+@media (max-width: 1090px) {
+  .taglineWrapper {
+    display: none
+  }
 }
 
 .tagline {
-  @apply text-[#0b080d] text-4xl leading-snug;
+  @apply text-[#0b080d] leading-snug;
   font-family: "Maison Neue", sans-serif;
-  font-weight: 300;
+  font-size: clamp(1.75rem, 8vw, 5rem);
+}
+
+@media (min-width: 1090px) {
+  .tagline {
+    font-size: clamp(2.5rem, 4vw, 5rem);
+  }
+}
+
+@media (max-width: 1090px) {
+
+  .section {
+    margin-top: 50px;
+    margin-bottom: 30px;
+  }
+
+  .row1 {
+    margin-top: 10px;
+    margin-bottom: 20px;
+  }
+
+  .row3 {
+    bottom: 0;
+  }
 }

@@ -3,7 +3,7 @@ import "./globals.css";
 import { SmoothScrollProvider } from "@/components/SmoothScrollProvider";
 
 export const metadata: Metadata = {
-  title: "Archidomo — Architecture Agency",
+  title: "Skkomkor — Architecture Agency",
   description:
     "Our architecture agency designs exceptional residences in rare locations, in France and around the world.",
 };

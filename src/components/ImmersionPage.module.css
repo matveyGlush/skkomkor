@@ -3,7 +3,6 @@
   height: 100dvh;
   position: relative;
   overflow: hidden;
-  background-color: #0b080d;
 }
 
 .heroContent {
@@ -13,16 +12,22 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding-top: 80px;
-  gap: 28px;
+  padding: 80px 24px 0;
+  gap: 16px;
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  .heroContent {
+    gap: 28px;
+  }
 }
 
 .heroTitle {
-  font-family: "Canela", serif;
-  font-size: 100.8px;
+  font-family: "Maison Neue", sans-serif;
+  font-size: clamp(2.5rem, 10vw, 100.8px);
   font-weight: 300;
   line-height: 1;
-  color: #ffffff;
   margin: 0;
   text-align: center;
 }
@@ -33,187 +38,46 @@
 }
 
 .heroSubtitle {
-  font-family: "Canela", serif;
-  font-size: 31.5px;
+  font-family: "Maison Neue", sans-serif;
+  font-size: clamp(16px, 4.5vw, 31.5px);
   font-weight: 300;
-  line-height: 39.375px;
-  color: #ffffff;
+  line-height: 1.25;
   text-align: center;
   max-width: 648px;
   margin: 0;
 }
 
-/* LargeText */
-.largeText {
-  height: 100dvh;
-  background-color: #F7F1E9;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0 140px;
-}
-
-.largeTextBody {
-  font-family: "Canela", serif;
-  font-size: 75.6px;
-  font-weight: 300;
-  line-height: 90.72px;
-  color: #0b080d;
-  text-align: center;
-  margin: 0;
-}
-
-/* LivingSpace — beige section */
-.livingBeige {
-  background-color: #F7F1E9;
-}
-
-.livingIntro {
-  padding: 94.5px 15.75px 94.5px 140px;
-}
-
-.livingIntroText {
-  font-family: "Maison Neue", sans-serif;
-  font-size: 31.5px;
-  font-weight: 400;
-  line-height: 37.8px;
-  color: #0b080d;
-  margin: 0;
-  max-width: 800px;
-}
-
-.livingHeroImage {
-  position: relative;
-  width: 100%;
-  height: 851px;
-  overflow: hidden;
-}
-
-/* LivingSpace — white section */
-.livingWhite {
-  background-color: #ffffff;
-  padding: 0 15.75px;
-}
-
-.livingMain {
-  padding-left: 124px;
-  position: relative;
-  padding-top: 94.5px;
-  padding-bottom: 94.5px;
-}
-
-.livingMainText {
-  font-family: "Canela", serif;
-  font-size: 75.6px;
-  font-weight: 300;
-  line-height: 90.72px;
-  color: #0b080d;
-  width: 662px;
-}
-
-.livingSmallImage {
-  position: absolute;
-  right: 0;
-  bottom: 0;
-  width: 357px;
-  height: 238px;
-  overflow: hidden;
-}
-
-.livingBottom {
-  padding-left: 124px;
-  padding-bottom: 94.5px;
-}
-
-.livingBottomText {
-  font-family: "Maison Neue", sans-serif;
-  font-size: 31.5px;
-  font-weight: 400;
-  line-height: 37.8px;
-  color: #0b080d;
-  margin: 0 0 47.25px 0;
-  max-width: 664px;
-}
-
-.gallery {
-  display: flex;
-  flex-direction: row;
-  gap: 15.75px;
-  align-items: flex-start;
-}
-
-.galleryPortrait {
-  width: 361px;
-  height: 596px;
-  position: relative;
-  overflow: hidden;
-  flex-shrink: 0;
-}
-
-.galleryRight {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 15.75px;
-}
-
-.gallerySquare {
-  position: relative;
-  height: 390px;
-  overflow: hidden;
-}
-
-.galleryLandscape {
-  position: relative;
-  height: 400px;
-  overflow: hidden;
+@media (min-width: 768px) {
+  .heroSubtitle {
+    line-height: 39.375px;
+  }
 }
 
 /* Clients */
 .clients {
   background-color: #bcb5a3;
-  padding: 111px 15.75px 94.5px;
+  padding: 64px 24px 64px;
+}
+
+@media (min-width: 768px) {
+  .clients {
+    padding: 111px 15.75px 94.5px;
+  }
 }
 
 .clientsIntro {
   font-family: "Maison Neue", sans-serif;
-  font-size: 31.5px;
+  font-size: clamp(18px, 4vw, 31.5px);
   font-weight: 400;
-  line-height: 37.8px;
+  line-height: 1.3;
   color: #0b080d;
-  margin: 0 0 79px 0;
+  margin: 0 0 40px 0;
   max-width: 664px;
 }
 
-.brandRows {
-  display: flex;
-  flex-direction: column;
-  gap: 47px;
-}
-
-.brandRow {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.brandItem {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 28px;
-}
-
-.brandName {
-  font-family: "Maison Neue", sans-serif;
-  font-size: 18.9px;
-  font-weight: 400;
-  color: #0b080d;
-}
-
-.brandSep {
-  font-family: "Maison Neue", sans-serif;
-  font-size: 8px;
-  color: #0b080d;
+@media (min-width: 768px) {
+  .clientsIntro {
+    line-height: 37.8px;
+    margin-bottom: 79px;
+  }
 }

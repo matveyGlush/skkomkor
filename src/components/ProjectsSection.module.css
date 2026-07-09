@@ -25,9 +25,10 @@
   width: 100%;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 1090px) {
   .featuredLeft {
     padding: 4rem;
+    padding-left: 6rem;
     width: 40%;
   }
 }
@@ -71,6 +72,17 @@
   height: 380px;
 }
 
+@media (max-width: 1090px) {
+  .featuredImage {
+    position: relative;
+    width: 300px;
+    height: 140px;
+    top: 0;
+    right: 0;
+    margin: 20px auto 0;
+  }
+}
+
 .parallaxLayer {
   position: absolute;
   top: -10%;
@@ -78,6 +90,13 @@
   right: 0;
   bottom: -30%;
   will-change: transform;
+}
+
+@media (max-width: 1090px) {
+  .parallaxLayer {
+    top: -30%;
+    bottom: -40%;
+  }
 }
 
 .listWrapper {
@@ -91,28 +110,49 @@
   padding-right: 1rem;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 1090px) {
   .listCol {
-    padding-left: 8rem;
+    padding-left: 6rem;
     padding-right: 8rem;
   }
 }
 
 .projectRow {
-  @apply flex flex-col sm:flex-row sm:items-center sm:justify-between border-b py-4 md:py-5 transition-opacity duration-200 hover:opacity-70 gap-1 sm:gap-0;
+  @apply relative isolate flex flex-col sm:flex-row sm:items-center sm:justify-between overflow-hidden border-b py-3 px-3 gap-1 sm:gap-0;
   cursor: pointer;
   border-color: rgba(11, 8, 13, 0.12);
 }
 
+.projectRow::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background-color: #0b080d;
+  transform: scaleY(0);
+  transform-origin: bottom;
+  transition: transform 0.45s cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+.projectRow:hover::before {
+  transform: scaleY(1);
+  transition-duration: 0.5s;
+}
+
+.projectRow:not(:hover)::before {
+  transition-duration: 0.35s;
+}
+
 .projectName {
-  @apply text-[#0b080d];
+  @apply relative z-[1] text-[#0b080d];
   font-family: var(--font-maison, sans-serif);
-  font-size: clamp(16px, 3vw, 20px);
+  font-size: 16px;
   font-weight: 500;
+  transition: color 0.3s ease;
 }
 
 .projectMeta {
-  @apply flex items-center gap-4 md:gap-8;
+  @apply relative z-[1] flex items-center gap-4 md:gap-8;
 }
 
 .projectMetaText {
@@ -121,20 +161,113 @@
   font-size: 11px;
   letter-spacing: 0.05em;
   color: rgba(11, 8, 13, 0.6);
+  transition: color 0.3s ease;
 }
 
 .projectArrow {
   @apply text-[#0b080d];
   font-size: 18px;
+  display: inline-block;
+  transition: color 0.3s ease, transform 0.35s cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+.projectRow:hover .projectName {
+  color: #f0ece4;
+}
+
+.projectRow:hover .projectMetaText {
+  color: rgba(240, 236, 228, 0.7);
+}
+
+.projectRow:hover .projectArrow {
+  color: #f0ece4;
+  transform: translate(2px, -2px);
 }
 
 .allProjectsCta {
-  @apply pt-8 md:pt-10;
+  @apply pt-8 pl-3 md:pt-10;
 }
 
 .allProjectsLink {
-  @apply inline-flex items-center gap-2 font-medium uppercase transition-opacity duration-200 hover:opacity-70 text-[#0b080d];
-  font-family: var(--font-maison, sans-serif);
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  height: 60px;
+  border: 1px solid #0b080d;
+  overflow: hidden;
+  text-decoration: none;
+}
+
+.allProjectsLink::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: #0b080d;
+  transform: translateY(100%);
+  transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+  z-index: 0;
+}
+
+.allProjectsLink:hover::before {
+  transform: translateY(0);
+}
+
+.allProjectsLabel {
+  position: relative;
+  z-index: 1;
+  padding: 0 20px 0 26px;
+  font-family: "Maison Neue Mono", monospace;
   font-size: 14px;
   letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #0b080d;
+  transition: color 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.allProjectsLink:hover .allProjectsLabel {
+  color: #fff;
+}
+
+.allProjectsIconBox {
+  position: relative;
+  z-index: 1;
+  flex: none;
+  width: 40px;
+  height: 40px;
+  margin: 0 10px 0 0;
+  overflow: hidden;
+  background-color: #0b080d;
+  transition: background-color 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.allProjectsLink:hover .allProjectsIconBox {
+  background-color: #fff;
+}
+
+.allProjectsIconTrack {
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.allProjectsLink:hover .allProjectsIconTrack {
+  transform: translateY(-40px);
+}
+
+.allProjectsIconSlot {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  width: 40px;
+  height: 40px;
+}
+
+.allProjectsIcon {
+  color: #fff;
+  transition: color 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.allProjectsLink:hover .allProjectsIcon {
+  color: #0b080d;
 }

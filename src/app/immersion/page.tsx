@@ -4,7 +4,7 @@ import { Footer } from "@/components/Footer";
 import { MainTitle } from "@/components/MainTitle";
 
 export const metadata = {
-  title: "Archidomo — Immersion",
+  title: "Skkomkor — Immersion",
 };
 
 export default function Immersion() {

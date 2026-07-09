@@ -2,18 +2,21 @@ import { AppHeader } from "@/components/AppHeader";
 import { ProjectsListPage } from "@/components/ProjectsListPage";
 import { Footer } from "@/components/Footer";
 import { MainTitle } from "@/components/MainTitle";
+import { getProjects } from "@/lib/projects";
 
 export const metadata = {
-  title: "Archidomo — Projects",
+  title: "Skkomkor — Projects",
 };
 
-export default function ProjectsPage() {
+export default async function ProjectsPage() {
+  const projects = await getProjects();
+
   return (
     <>
       <MainTitle />
       <AppHeader />
       <main>
-        <ProjectsListPage />
+        <ProjectsListPage projects={projects} />
       </main>
       <Footer />
     </>

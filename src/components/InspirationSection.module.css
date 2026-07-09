@@ -1,146 +1,330 @@
 @reference "../app/globals.css";
 
 .section {
-  @apply px-4 md:px-6;
-  padding-top: 100px;
-  padding-bottom: 0;
   background-color: #bcb5a3;
 }
 
-.header {
-  margin-bottom: 64px;
+/* ── hero band ── */
+
+.hero {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  aspect-ratio: 4 / 5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
 }
 
-.heading {
-  @apply leading-none mb-8 text-[#0b080d];
-  font-family: "Canela", serif;
-  font-weight: 300;
-  font-size: clamp(48px, 6vw, 80px);
-}
-
-.bodyText1 {
-  @apply leading-relaxed max-w-[620px] mb-4;
-  font-family: "Maison Neue", sans-serif;
-  font-size: clamp(16px, 1.4vw, 22px);
-  font-weight: 400;
-  color: rgba(11, 8, 13, 0.8);
-}
-
-.bodyText2 {
-  @apply leading-relaxed max-w-[620px] text-[#0b080d];
-  font-family: "Maison Neue", sans-serif;
-  font-size: clamp(16px, 1.4vw, 22px);
-  font-weight: 400;
-}
-
-/* ── interactive layout ── */
-
-.content {
-  display: grid;
-  grid-template-columns: 38fr 62fr;
-  gap: 0;
-  align-items: stretch;
-}
-
-@media (max-width: 768px) {
-  .content {
-    grid-template-columns: 1fr;
+@media (min-width: 768px) {
+  .hero {
+    aspect-ratio: 21 / 9;
   }
 }
 
-/* ── left: tabs ── */
-
-.tabs {
-  display: flex;
-  flex-direction: column;
-  padding-bottom: 60px;
-  padding-right: 40px;
+.heroImageWrap {
+  position: absolute;
+  inset: -8% 0;
+  height: 116%;
+  will-change: transform;
 }
 
-.tab {
+.heroImage {
+  object-fit: cover;
+}
+
+.heroOverlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.35);
+}
+
+.heroContent {
+  position: relative;
+  z-index: 2;
   display: flex;
-  align-items: baseline;
-  gap: 20px;
-  padding: 22px 0;
-  border-top: 1px solid rgba(11, 8, 13, 0.2);
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  padding: 0 24px;
+  text-align: center;
+}
+
+.heroTitle {
+  @apply leading-none text-white;
+  font-family: "Maison Neue", sans-serif;
+  font-size: clamp(2.5rem, 4vw, 5rem);
+}
+
+.heroDescription {
+  @apply leading-relaxed text-white max-w-[560px];
+  font-family: "Maison Neue", sans-serif;
+  font-size: clamp(16px, 1.6vw, 22px);
+  font-weight: 400;
+}
+
+/* ── content ── */
+
+.content {
+  @apply px-4 md:px-6;
+  padding-top: 64px;
+  padding-bottom: 100px;
+}
+
+.cta {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  height: 60px;
+  border: 1px solid #0b080d;
+  overflow: hidden;
+  text-decoration: none;
+}
+
+.cta::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: #0b080d;
+  transform: translateY(100%);
+  transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+  z-index: 0;
+}
+
+.cta:hover::before {
+  transform: translateY(0);
+}
+
+.ctaLabel {
+  position: relative;
+  z-index: 1;
+  padding: 0 20px 0 26px;
+  font-family: "Maison Neue Mono", monospace;
+  font-size: 14px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #0b080d;
+  transition: color 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.cta:hover .ctaLabel {
+  color: #fff;
+}
+
+.ctaIconBox {
+  position: relative;
+  z-index: 1;
+  flex: none;
+  width: 40px;
+  height: 40px;
+  margin: 0 10px 0 0;
+  overflow: hidden;
+  background-color: #0b080d;
+  transition: background-color 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.cta:hover .ctaIconBox {
+  background-color: #fff;
+}
+
+.ctaIconTrack {
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.cta:hover .ctaIconTrack {
+  transform: translateY(-40px);
+}
+
+.ctaIconSlot {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  width: 40px;
+  height: 40px;
+}
+
+.ctaIcon {
+  color: #fff;
+  transition: color 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.cta:hover .ctaIcon {
+  color: #0b080d;
+}
+
+/* ── accordion ── */
+
+.accordion {
+  display: flex;
+  flex-direction: column;
+  border-bottom: 1px solid rgba(11, 8, 13, 0.2);
+  margin-bottom: 40px;
+}
+
+.divider {
+  height: 1px;
+  background-color: rgba(11, 8, 13, 0.2);
+}
+
+.accordionHead {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  width: 100%;
+  padding: 28px 0;
   background: none;
-  border-left: none;
-  border-right: none;
-  border-bottom: none;
+  border: none;
   cursor: pointer;
   text-align: left;
   transition: opacity 0.2s;
-  width: 100%;
 }
 
-.tab:last-of-type {
-  border-bottom: 1px solid rgba(11, 8, 13, 0.2);
+.accordionHead:hover {
+  opacity: 0.75;
 }
 
-.tab:hover {
-  opacity: 0.7;
+@media (max-width: 768px) {
+  .accordionHead {
+    padding: 8px 0;
+  }
 }
 
-.tabActive .tabName {
-  font-weight: 500;
-}
-
-.tabActive .tabNum {
-  color: #0b080d;
-}
-
-.tabNum {
-  font-family: "Maison Neue Mono", monospace;
-  font-size: 11px;
-  letter-spacing: 0.08em;
-  color: rgba(11, 8, 13, 0.45);
+.crossIcon {
+  position: relative;
   flex-shrink: 0;
-  transition: color 0.2s;
+  width: 20px;
+  height: 20px;
 }
 
-.tabName {
+.crossLineV,
+.crossLineH {
+  position: absolute;
+  background-color: #0b080d;
+  top: 50%;
+  left: 50%;
+  transition: transform 0.35s ease;
+}
+
+.crossLineV {
+  width: 1px;
+  height: 20px;
+  transform: translate(-50%, -50%);
+}
+
+.crossLineH {
+  width: 20px;
+  height: 1px;
+  transform: translate(-50%, -50%);
+}
+
+.open .crossLineV {
+  transform: translate(-50%, -50%) rotate(90deg);
+  opacity: 0;
+}
+
+@media (min-width: 900px) {
+  .crossLineV {
+    transform: translate(-50%, -50%) rotate(90deg);
+    opacity: 0;
+  }
+}
+
+.accordionTitle {
+  @apply flex items-baseline gap-6;
   font-family: "Maison Neue", sans-serif;
-  font-size: clamp(18px, 1.5vw, 24px);
+  font-size: clamp(20px, 2.4vw, 32px);
   font-weight: 300;
   color: #0b080d;
-  transition: font-weight 0.15s;
 }
 
-.caption {
-  margin-top: auto;
-  padding-top: 48px;
+/* ── gallery (grid-rows expand/collapse) ── */
+
+.galleryOuter {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.5s cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+.open .galleryOuter {
+  grid-template-rows: 1fr;
+}
+
+@media (min-width: 900px) {
+  .galleryOuter {
+    grid-template-rows: 1fr;
+  }
+}
+
+.galleryInner {
+  overflow: hidden;
+  min-height: 0;
+}
+
+.gallery {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  padding: 15px;
+  flex-direction: column;
+}
+
+@media (min-width: 900px) {
+  .gallery {
+    flex-direction: row;
+    gap: 40px;
+  }
+}
+
+.galleryCaption {
+  flex: 0 0 auto;
+  margin: 0;
   font-family: "Maison Neue Mono", monospace;
   font-size: 11px;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: rgba(11, 8, 13, 0.6);
-  line-height: 1.8;
-  max-width: 320px;
 }
 
-/* ── right: image ── */
+@media (min-width: 900px) {
+  .galleryCaption {
+    width: 220px;
+    max-width: 220px;
+  }
+}
 
-.imageWrap {
+.galleryImages {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+}
+
+.galleryItem {
   position: relative;
-  width: 100%;
+  flex: 0 0 auto;
+  width: 150px;
   aspect-ratio: 3 / 4;
   overflow: hidden;
 }
 
-@media (max-width: 768px) {
-  .imageWrap {
-    aspect-ratio: 4 / 3;
-    margin-top: 32px;
+@media (min-width: 640px) {
+  .galleryItem {
+    width: 150px;
   }
 }
 
-.image {
-  object-fit: cover;
-  transition: opacity 0.4s ease;
+.galleryImageWrap {
+  position: absolute;
+  inset: -15% 0;
+  height: 130%;
+  will-change: transform;
 }
 
-.imagePlaceholder {
-  width: 100%;
-  height: 100%;
-  background-color: #8a8278;
+.galleryImage {
+  object-fit: cover;
 }

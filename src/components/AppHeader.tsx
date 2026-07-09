@@ -4,6 +4,9 @@ import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
 import { usePathname } from "next/navigation";
 import styles from "./AppHeader.module.css";
+import Link from "next/link";
+
+const homeLink = { label: "Главная", href: "/" };
 
 const navMainLinks = [
   { label: "Проекты", href: "/projects" },
@@ -12,13 +15,14 @@ const navMainLinks = [
 ];
 
 const navSecondaryLinks = [
-  { label: "Обратная связь", href: "/news" },
-  { label: "Связаться с нами", href: "/socials" },
+  { label: "Связаться с нами", href: "/contact#form" },
 ];
 
 export function AppHeader() {
   const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
+  const isHome = pathname === "/";
+  const mainLinks = isHome ? navMainLinks : [homeLink, ...navMainLinks];
 
   useEffect(() => {
     document.body.style.overflow = isOpen ? "hidden" : "";
@@ -29,10 +33,10 @@ export function AppHeader() {
     <>
       <header className={styles.header}>
         <nav className={styles.nav} aria-label="Main navigation">
-          <span className={styles.mobileBrand}>КОМКОР</span>
+          <Link href="/" className={styles.mobileBrand}>КОМКОР</Link>
 
           <div className={styles.primaryLinks}>
-            {navMainLinks.map((link) => {
+            {mainLinks.map((link) => {
               const isActive =
                 pathname === link.href ||
                 pathname.startsWith(link.href + "/");
@@ -65,7 +69,7 @@ export function AppHeader() {
       {isOpen && (
         <div className={styles.mobileMenu} role="dialog" aria-label="Navigation menu">
           <nav className={styles.mobileMenuInner}>
-            {[...navMainLinks, ...navSecondaryLinks].map((link) => {
+            {[...mainLinks, ...navSecondaryLinks].map((link) => {
               const isActive =
                 pathname === link.href ||
                 pathname.startsWith(link.href + "/");

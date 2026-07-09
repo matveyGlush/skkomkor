@@ -1,0 +1,128 @@
+.list {
+  display: flex;
+  flex-direction: column;
+}
+
+.item {
+  border-bottom: 1px solid rgba(11, 8, 13, 0.2);
+}
+
+.item:first-child {
+  border-top: 1px solid rgba(11, 8, 13, 0.2);
+}
+
+.itemImage {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  height: 200px;
+  border-radius: 2px;
+  background-color: rgba(11, 8, 13, 0.08);
+  margin-right: 40px;
+}
+
+.itemImageEl {
+  object-fit: cover;
+  transform: translateY(var(--parallax-y, 0px)) scale(1.25);
+  will-change: transform;
+}
+
+@media (min-width: 768px) {
+  .itemImage {
+    flex: none;
+    width: 290px;
+    height: 190px;
+    border-radius: 3px;
+  }
+}
+
+.itemHeader {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  gap: 20px;
+  padding: 22px 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  color: #0b080d;
+}
+
+.itemNumber {
+  font-family: "Canela", serif;
+  font-weight: 300;
+  font-size: 18.9px;
+  color: rgba(11, 8, 13, 0.5);
+  flex-shrink: 0;
+  width: 32px;
+}
+
+.itemTitle {
+  font-family: "Maison Neue", sans-serif;
+  font-size: 18.9px;
+  font-weight: 400;
+  flex: 1;
+}
+
+.itemIcon {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+  transition: transform 0.35s cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+.itemIconOpen {
+  transform: rotate(45deg);
+}
+
+.itemBody {
+  display: grid;
+  transition: grid-template-rows 0.4s cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+.itemBodyInner {
+  overflow: hidden;
+}
+
+.itemBodyContent {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 20px;
+  margin: 0 0 26px 52px;
+}
+
+.itemDescription {
+  font-family: "Maison Neue", sans-serif;
+  font-size: 15.75px;
+  line-height: 23px;
+  color: rgba(11, 8, 13, 0.75);
+  max-width: 664px;
+  margin: 0;
+}
+
+@media (min-width: 768px) {
+  .itemHeader {
+    gap: 28px;
+    padding: 28px 0;
+  }
+
+  .itemNumber,
+  .itemTitle {
+    font-size: 22px;
+  }
+
+  .itemBodyContent {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 40px;
+    margin-left: 60px;
+  }
+
+  .itemDescription {
+    font-size: 16.8px;
+    line-height: 25.2px;
+    flex: 1;
+  }
+}

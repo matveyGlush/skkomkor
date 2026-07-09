@@ -12,6 +12,9 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // PHP API, deployed to the hosting alongside phpMyAdmin — not part of
+    // this Next.js build.
+    "php-api/**",
   ]),
 ]);
 

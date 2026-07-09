@@ -51,17 +51,6 @@
   letter-spacing: 0.1em;
 }
 
-.socialsBlock {
-  @apply space-y-2;
-}
-
-.socialLink {
-  @apply uppercase text-white hover:opacity-60 transition-opacity block;
-  font-family: "Maison Neue Mono", monospace;
-  font-size: 14px;
-  letter-spacing: 0.1em;
-}
-
 .address {
   @apply not-italic uppercase leading-[1.8] mb-8;
   font-family: "Maison Neue Mono", monospace;

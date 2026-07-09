@@ -25,6 +25,11 @@
   .subtitle {
     font-size: clamp(14px, 4vw, 16px);
   }
+
+  .section {
+    display: none
+  }
+
 }
 
 .divider {

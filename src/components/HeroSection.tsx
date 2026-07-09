@@ -37,9 +37,10 @@ export function HeroSection() {
 
   return (
     <section className={styles.section}>
-      <h1 className="">ARCHIDOMO</h1>
+      <h1 className="">SKKOMKOR</h1>
 
       <div className={styles.carousel}>
+        <div className={styles.textShadow}></div>
         {slides.map((slide, index) => (
           <div
             key={slide.src}

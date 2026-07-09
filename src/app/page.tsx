@@ -6,8 +6,11 @@ import { VisionSection } from "@/components/VisionSection";
 import { InspirationSection } from "@/components/InspirationSection";
 import { Footer } from "@/components/Footer";
 import { MainTitle } from "@/components/MainTitle";
+import { getProjects } from "@/lib/projects";
 
-export default function Home() {
+export default async function Home() {
+  const projects = await getProjects();
+
   return (
     <>
       <MainTitle />
@@ -15,7 +18,7 @@ export default function Home() {
       <main>
         <HeroSection />
         <AgencySection />
-        <ProjectsSection />
+        <ProjectsSection projects={projects.slice(0, 12)} />
         <VisionSection />
         <InspirationSection />
       </main>

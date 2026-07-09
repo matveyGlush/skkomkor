@@ -1,35 +1,33 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import Image from "next/image";
+import Link from "next/link";
+import { ArrowUpRightSmIcon } from "@/components/icons";
+import type { Project } from "@/types/project";
 import styles from "./ProjectsSection.module.css";
 
-const projects = [
-  { name: "ЖК «Десяткино»", size: "ШТУКАТУРНЫЙ ФАСАД", location: "МУРИНО" },
-  { name: "ЖК «Виктория»", size: "ОКОННЫЕ КОНСТРУКЦИИ", location: "МУРИНО" },
-  { name: "ЖК «Актёрский Олимп»", size: "ФАСАДНЫЕ РАБОТЫ", location: "ВЫБОРГСКИЙ Р-Н" },
-  { name: "Бассейн ВИФК (СКА)", size: "ОСТЕКЛЕНИЕ", location: "САНКТ-ПЕТЕРБУРГ" },
-  { name: "ЖК Дом на Школьной", size: "ФАСАД, ОКНА", location: "ШУШАРЫ" },
-  { name: "ЖК «Мой Город»", size: "АЛЮ. КОНСТРУКЦИИ", location: "ДЕВЯТКИНО" },
-  { name: "ЖК Парколa", size: "ФАСАД, ОСТЕКЛЕНИЕ", location: "ПАРНАС" },
-  { name: "ЖК «Австрийский Квартал»", size: "ШТУКАТУРНЫЙ ФАСАД", location: "КУДРОВО" },
-  { name: "Военно-Медицинская Академия", size: "ФАСАДНЫЕ РАБОТЫ", location: "САНКТ-ПЕТЕРБУРГ" },
-  { name: "ЖК «Три Ветра»", size: "ФАСАДНЫЕ РАБОТЫ", location: "САНКТ-ПЕТЕРБУРГ" },
-  { name: "ЖК UP-квартал Светлановский", size: "ФАСАДНЫЕ РАБОТЫ", location: "САНКТ-ПЕТЕРБУРГ" },
-];
+function stripBrackets(tag: string) {
+  return tag.replace(/^\[\s*/, "").replace(/\s*\]$/, "");
+}
 
-export function ProjectsSection() {
-  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+export function ProjectsSection({ projects }: { projects: Project[] }) {
+  const [featured, ...rest] = projects;
   const sectionRef = useRef<HTMLDivElement | null>(null);
   const imageContainerRef = useRef<HTMLDivElement | null>(null);
   const parallaxRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
+    const mobileQuery = window.matchMedia("(max-width: 768px)");
+
     const handleScroll = () => {
       const rect = sectionRef.current?.getBoundingClientRect();
       if (!rect) return;
+      const isMobile = mobileQuery.matches;
       if (imageContainerRef.current) {
-        imageContainerRef.current.style.transform = `translateY(${rect.top * 0.12}px)`;
+        imageContainerRef.current.style.transform = isMobile
+          ? ""
+          : `translateY(${rect.top * 0.12}px)`;
       }
       if (parallaxRef.current) {
         parallaxRef.current.style.transform = `translateY(${rect.top * 0.1}px)`;
@@ -40,72 +38,79 @@ export function ProjectsSection() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  if (!featured) return null;
+
   return (
     <section className={styles.featuredProjectSection}>
       {/* Featured Project */}
       <div className={styles.featuredProject} ref={sectionRef}>
         <div className={styles.featuredLeft}>
           <div>
-            <h2 className={styles.featuredTitle}>ЖК «Триумф Парк»</h2>
+            <h2 className={styles.featuredTitle}>{featured.title}</h2>
             <div className={styles.featuredMeta}>
-              <span>[ ШТУКАТУРНЫЙ ФАСАД ]</span>
-              <span>[ ВИТРАЖНОЕ ОСТЕКЛЕНИЕ ]</span>
-              <span>[ ПУЛКОВСКОЕ ШОССЕ ]</span>
+              {featured.tags.map((tag) => (
+                <span key={tag}>{tag}</span>
+              ))}
+            </div>
+          </div>
+
+          <div className={styles.featuredImage} ref={imageContainerRef}>
+            <div ref={parallaxRef} className={styles.parallaxLayer}>
+              {featured.images[0] && (
+                <Image
+                  src={featured.images[0].url}
+                  fill
+                  unoptimized
+                  className="object-cover"
+                  alt={featured.title}
+                />
+              )}
             </div>
           </div>
 
           <div>
-            <p className={styles.featuredCaption}>
-              ФАСАДНЫЕ РАБОТЫ,
-              <br />
-              ОКОННЫЕ И ДВЕРНЫЕ БЛОКИ,
-              <br />
-              ВИТРАЖНОЕ ОСТЕКЛЕНИЕ.
-            </p>
-            <a href="/projects" className={styles.featuredCta}>
+            <p className={styles.featuredCaption}>{featured.description}</p>
+            <Link href={`/projects/${featured.slug}`} className={styles.featuredCta}>
               ПОДРОБНЕЕ
               <span aria-hidden="true">→</span>
-            </a>
-          </div>
-        </div>
-
-        <div className={styles.featuredImage} ref={imageContainerRef}>
-          <div ref={parallaxRef} className={styles.parallaxLayer}>
-            <Image
-              src="/images/hero-2.jpg"
-              fill
-              className="object-cover"
-              alt="Villa Elektra"
-            />
+            </Link>
           </div>
         </div>
 
         {/* Project List */}
         <div className={styles.listWrapper}>
           <div className={styles.listCol}>
-            {projects.map((project, index) => (
-              <a
-                key={project.name}
-                href="#"
+            {rest.map((project) => (
+              <Link
+                key={project.slug}
+                href={`/projects/${project.slug}`}
                 className={styles.projectRow}
-                onMouseEnter={() => setHoveredIndex(index)}
-                onMouseLeave={() => setHoveredIndex(null)}
               >
-                <span className={styles.projectName}>{project.name}</span>
+                <span className={styles.projectName}>{project.title}</span>
                 <div className={styles.projectMeta}>
                   <span className={styles.projectMetaText}>
-                    {project.size}&nbsp;&nbsp;{project.location}
+                    {stripBrackets(project.tags[0] ?? "")}&nbsp;&nbsp;
+                    {stripBrackets(project.tags[project.tags.length - 1] ?? "")}
                   </span>
                   <span className={styles.projectArrow} aria-hidden="true">↗</span>
                 </div>
-              </a>
+              </Link>
             ))}
 
             <div className={styles.allProjectsCta}>
-              <a href="/projects" className={styles.allProjectsLink}>
-                ВСЕ ПРОЕКТЫ
-                <span aria-hidden="true">→</span>
-              </a>
+              <Link href="/projects" className={styles.allProjectsLink}>
+                <span className={styles.allProjectsLabel}>ВСЕ ПРОЕКТЫ</span>
+                <span className={styles.allProjectsIconBox}>
+                  <span className={styles.allProjectsIconTrack}>
+                    <span className={styles.allProjectsIconSlot}>
+                      <ArrowUpRightSmIcon className={styles.allProjectsIcon} />
+                    </span>
+                    <span className={styles.allProjectsIconSlot}>
+                      <ArrowUpRightSmIcon className={styles.allProjectsIcon} />
+                    </span>
+                  </span>
+                </span>
+              </Link>
             </div>
           </div>
         </div>

@@ -12,7 +12,7 @@
 
 .mobileBrand {
   @apply md:hidden font-bold tracking-widest;
-  font-size: 13px;
+  font-size: 20px;
 }
 
 .primaryLinks {
