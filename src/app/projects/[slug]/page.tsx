@@ -3,12 +3,9 @@ import { AppHeader } from "@/components/AppHeader";
 import { ProjectDetailPage } from "@/components/ProjectDetailPage";
 import { Footer } from "@/components/Footer";
 import { MainTitle } from "@/components/MainTitle";
-import { getProjects, getProjectBySlug } from "@/lib/projects";
+import { getProjectBySlug } from "@/lib/projects";
 
-export async function generateStaticParams() {
-  const projects = await getProjects();
-  return projects.map((project) => ({ slug: project.slug }));
-}
+export const dynamic = "force-dynamic";
 
 export async function generateMetadata({
   params,
