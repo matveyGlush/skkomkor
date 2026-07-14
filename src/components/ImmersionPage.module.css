@@ -3,11 +3,33 @@
   height: 100dvh;
   position: relative;
   overflow: hidden;
+  background-color: #0b080d;
+}
+
+.heroBackground {
+  position: absolute;
+  inset: -35% 0;
+  overflow: hidden;
+}
+
+.heroBackground::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(11, 8, 13, 0.45);
+  z-index: 1;
+}
+
+.heroImage {
+  object-fit: cover;
+  transform: translateY(var(--parallax-y, 0px));
+  will-change: transform;
 }
 
 .heroContent {
   position: absolute;
   inset: 0;
+  z-index: 2;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -15,6 +37,7 @@
   padding: 80px 24px 0;
   gap: 16px;
   text-align: center;
+  color: #ffffff;
 }
 
 @media (min-width: 768px) {
