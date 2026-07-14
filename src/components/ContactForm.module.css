@@ -108,6 +108,29 @@
   line-height: 1.5;
 }
 
+.checkboxField {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.625rem;
+  cursor: pointer;
+}
+
+.checkbox {
+  margin-top: 0.15em;
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  accent-color: #0b080d;
+  cursor: pointer;
+}
+
+.checkboxLabel {
+  font-family: "Maison Neue", sans-serif;
+  font-size: 14px;
+  line-height: 1.4;
+  color: rgba(11, 8, 13, 0.75);
+}
+
 .footer {
   display: flex;
   align-items: center;

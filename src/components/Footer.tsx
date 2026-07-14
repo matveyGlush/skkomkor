@@ -63,9 +63,10 @@ export function Footer() {
       </div>
 
       <div className={styles.bottomBar}>
-        <span>© 2018 — ВСЕ ПРАВА ЗАЩИЩЕНЫ</span>
+        <span>© {new Date().getFullYear()} — ВСЕ ПРАВА ЗАЩИЩЕНЫ</span>
         <div className={styles.legalLinks}>
-          <a href="#" className={styles.legalLink}>ПОЛИТИКА КОНФИДЕНЦИАЛЬНОСТИ</a>
+          <a href="/privacy" className={styles.legalLink}>ПОЛИТИКА КОНФИДЕНЦИАЛЬНОСТИ</a>
+          <a href="/consent" className={styles.legalLink}>СОГЛАСИЕ НА ОБРАБОТКУ ПЕРСОНАЛЬНЫХ ДАННЫХ</a>
         </div>
       </div>
     </footer>

@@ -1,12 +1,41 @@
 "use client";
 
-import { useState, type FormEvent } from "react";
+import { useState, type ChangeEvent, type FormEvent } from "react";
 import styles from "./ContactForm.module.css";
 
 type Status = "idle" | "submitting" | "success" | "error";
 
+function formatPhone(value: string): string {
+  let digits = value.replace(/\D/g, "");
+  if (!digits) return "";
+
+  if (digits[0] === "8" || digits[0] === "7") {
+    digits = digits.slice(1);
+  }
+  digits = digits.slice(0, 10);
+
+  let result = "+7";
+  if (digits.length > 0) result += ` (${digits.slice(0, 3)}`;
+  if (digits.length >= 3) result += ")";
+  if (digits.length > 3) result += ` ${digits.slice(3, 6)}`;
+  if (digits.length > 6) result += `-${digits.slice(6, 8)}`;
+  if (digits.length > 8) result += `-${digits.slice(8, 10)}`;
+  return result;
+}
+
 export function ContactForm() {
   const [status, setStatus] = useState<Status>("idle");
+  const [contact, setContact] = useState("");
+
+  function handleContactChange(event: ChangeEvent<HTMLInputElement>) {
+    const raw = event.target.value;
+    const looksLikeEmail = /[a-zA-Zа-яА-ЯёЁ@]/.test(raw);
+    if (looksLikeEmail) {
+      setContact(raw);
+      return;
+    }
+    setContact(formatPhone(raw));
+  }
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -27,6 +56,7 @@ export function ContactForm() {
       if (!res.ok) throw new Error("Request failed");
       setStatus("success");
       form.reset();
+      setContact("");
     } catch {
       setStatus("error");
     }
@@ -60,7 +90,9 @@ export function ContactForm() {
                 className={styles.input}
                 type="text"
                 name="contact"
-                placeholder="+7 (___) ___-__-__"
+                placeholder="+7 (___) ___-__-__ или @mail"
+                value={contact}
+                onChange={handleContactChange}
                 required
               />
             </label>
@@ -74,6 +106,18 @@ export function ContactForm() {
               placeholder="Расскажите о проекте или задайте вопрос"
               required
             />
+          </label>
+
+          <label className={styles.checkboxField}>
+            <input
+              className={styles.checkbox}
+              type="checkbox"
+              name="consent"
+              required
+            />
+            <span className={styles.checkboxLabel}>
+              Согласие на обработку персональных данных<br/> и соглашение с политикой конфиденциальности
+            </span>
           </label>
 
           <div className={styles.footer}>

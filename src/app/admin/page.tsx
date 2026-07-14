@@ -97,6 +97,7 @@ export default function AdminPage() {
   const [tagInput, setTagInput] = useState("");
   const [images, setImages] = useState<GalleryImage[]>([]);
   const [imageThumb, setImageThumb] = useState<ImageField>(null);
+  const [existingThumbUrl, setExistingThumbUrl] = useState<string | null>(null);
   const [saving, setSaving] = useState(false);
   const [formError, setFormError] = useState<string | null>(null);
 
@@ -142,6 +143,7 @@ export default function AdminPage() {
     }
     setImages([]);
     setImageThumb(null);
+    setExistingThumbUrl(null);
     setFormError(null);
   }
 
@@ -214,6 +216,7 @@ export default function AdminPage() {
       }))
     );
     setImageThumb(null);
+    setExistingThumbUrl(project.imageThumbUrl ?? null);
     setFormError(null);
     window.scrollTo({ top: 0, behavior: "smooth" });
   }
@@ -411,6 +414,21 @@ export default function AdminPage() {
                 if (file) setImageThumb(await fileToBase64(file));
               }}
             />
+            {(imageThumb || existingThumbUrl) && (
+              <div className={styles.imageGrid}>
+                <div className={styles.imageGridItem}>
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={
+                      imageThumb
+                        ? `data:${imageThumb.mime};base64,${imageThumb.base64}`
+                        : existingThumbUrl!
+                    }
+                    alt=""
+                  />
+                </div>
+              </div>
+            )}
           </div>
 
           {formError && <p className={styles.error}>{formError}</p>}
