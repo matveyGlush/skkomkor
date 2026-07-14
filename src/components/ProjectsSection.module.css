@@ -2,7 +2,8 @@
 
 .featuredProjectSection {
   display: flex;
-  justify-content: center
+  justify-content: center;
+  background-color: #f7f6f4;
 }
 
 .featuredProject {

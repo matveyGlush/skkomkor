@@ -38,6 +38,7 @@ export function HeroSection() {
   return (
     <section className={styles.section}>
       <h1 className="">SKKOMKOR</h1>
+      <div className={styles.background}></div>
 
       <div className={styles.carousel}>
         <div className={styles.textShadow}></div>

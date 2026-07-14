@@ -88,3 +88,12 @@
     width: 43vw;
   }
 }
+
+.background {
+  position: absolute;
+  top: -46px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #f7f6f4;
+}
