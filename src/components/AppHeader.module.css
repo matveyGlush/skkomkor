@@ -24,7 +24,7 @@
 }
 
 .navLink {
-  @apply font-medium leading-none no-underline;
+  @apply leading-none no-underline;
   font-family: var(--font-maison-neue);
   font-size: 16px;
 }

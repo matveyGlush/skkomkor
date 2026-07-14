@@ -1,17 +1,27 @@
+.main {
+  display: flex;
+}
+
+@media (max-width: 1024px) {
+  .main {
+    flex-direction: column;
+  }
+}
+
 .section {
   padding-top: 6rem;
 }
 
 @media (min-width: 768px) {
   .section {
-    padding-top: 261.45px;
+    padding-top: 100px;
   }
 }
 
 .wrapper {
-  display: flex;
-  flex-direction: column;
-  gap: 2.5rem;
+  flex-direction: row;
+  gap: 94.5px;
+  margin: 0 15.75px;
   margin: 0 1rem;
 }
 
@@ -37,7 +47,7 @@
 
 .title {
   font-family: "Maison Neue", sans-serif;
-  font-size: clamp(2.5rem, 10vw, 75.6px);
+  font-size: clamp(2.5rem, 7vw, 45.6px);
   font-weight: 300;
   line-height: 1.2;
   color: #0b080d;
@@ -64,7 +74,7 @@
 
 .description {
   font-family: "Maison Neue", sans-serif;
-  font-size: clamp(20px, 5vw, 31.5px);
+  font-size: clamp(20px, 5vw, 21.5px);
   font-weight: 300;
   line-height: 1.25;
   color: #111111;
@@ -72,8 +82,19 @@
   max-width: 560px;
 }
 
+.snabDescription {
+  font-family: "Maison Neue", sans-serif;
+  font-size: clamp(20px, 5vw, 31.5px);
+  font-weight: 300;
+  line-height: 1.25;
+  color: #111111;
+  margin: 0;
+  margin-top: 30px;
+  max-width: 560px;
+}
+
 @media (min-width: 768px) {
-  .description {
+  .snabDescription {
     line-height: 39.375px;
   }
 }
@@ -83,11 +104,26 @@
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+  margin-bottom: 50px;
 }
 
 @media (min-width: 768px) {
   .contactLinks {
     margin-top: 47.25px;
+    gap: 3.9375px;
+  }
+}
+
+.snabLinks {
+  margin-top: 0.4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+@media (min-width: 768px) {
+  .snabLinks {
+    margin-top: 14.25px;
     gap: 3.9375px;
   }
 }
@@ -125,6 +161,7 @@
   display: flex;
   flex-direction: column;
   gap: 14px;
+  margin-bottom: 50px;
 }
 
 .addressName {

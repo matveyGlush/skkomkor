@@ -124,6 +124,19 @@
   color: rgba(11, 8, 13, 0.7);
 }
 
+@media (min-width: 1024px) {
+  .caption {
+    font-size: 12px;
+  }
+}
+
+@media (min-width: 1440px) {
+  .caption {
+    font-size: 14px;
+  }
+}
+
+
 .captionPlus {
   position: absolute;
   background-color: #0b080d;

@@ -53,7 +53,7 @@ export function AgencySection() {
       <div className={styles.quotes}>
         <p ref={quoteOneRef} className={styles.quote_one}>
           <span className={styles.quotePlus}></span>
-          СК&nbsp;КОМКОР имеет производственный цех <br/> по&nbsp;изготовлению алюминиевых светопрозрачных <br/> конструкций.
+          КОМКОР имеет производственный цех <br/> по&nbsp;изготовлению алюминиевых светопрозрачных <br/> конструкций.
         </p>
         <p ref={quoteTwoRef} className={styles.quote_two}>
           <span className={styles.quotePlus}></span>

@@ -100,7 +100,7 @@ export function InspirationSection() {
         <div className={styles.heroContent}>
           <h2 className={styles.heroTitle}>Направления работ</h2>
           <p className={styles.heroDescription}>
-            Полный цикл фасадных и кровельных работ — от проектирования до сдачи объекта.
+            Полный цикл фасадных и витражных работ — от проектирования до сдачи объекта.
           </p>
         </div>
       </div>

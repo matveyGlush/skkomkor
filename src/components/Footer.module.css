@@ -45,7 +45,7 @@
 }
 
 .contactEmail {
-  @apply uppercase text-white hover:opacity-60 transition-opacity block;
+  @apply text-white hover:opacity-60 transition-opacity block;
   font-family: "Maison Neue Mono", monospace;
   font-size: 14px;
   letter-spacing: 0.1em;

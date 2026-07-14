@@ -26,7 +26,7 @@ function PlusIcon() {
 
 export function ContactPage() {
   return (
-    <>
+    <div className={styles.main}>
     <section className={styles.section}>
       <div className={styles.wrapper}>
         <div className={styles.titleCol}>
@@ -43,6 +43,22 @@ export function ContactPage() {
             {[
               { href: "tel:+79111695757", label: "+7 (911) 169-57-57" },
               { href: "mailto:Komarvm@yandex.ru", label: "Komarvm@yandex.ru" },
+            ].map(({ href, label }) => (
+              <a key={label} href={href} className={styles.contactLink}>
+                <PlusIcon />
+                <span className={styles.contactLinkLabel}>{label}</span>
+              </a>
+            ))}
+          </div>
+
+          <p className={styles.snabDescription}>
+            Отдел снабжения
+          </p>
+
+          <div className={styles.snabLinks}>
+            {[
+              { href: "tel:+79219050010", label: "+7 (921) 905-00-10" },
+              { href: "mailto:snab@skkomkor.ru", label: "snab@skkomkor.ru" },
             ].map(({ href, label }) => (
               <a key={label} href={href} className={styles.contactLink}>
                 <PlusIcon />
@@ -68,6 +84,6 @@ export function ContactPage() {
     </section>
 
     <ContactForm />
-    </>
+    </div>
   );
 }

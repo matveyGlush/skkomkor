@@ -33,7 +33,17 @@ export function Footer() {
               +7 (911) 169-57-57
             </a>
             <a href="mailto:Komarvm@yandex.ru" className={styles.contactEmail}>
-              KOMARVM@YANDEX.RU
+              Komarvm@yandex.ru
+            </a>
+          </div>
+
+          <p className={styles.colLabel}>Отдел снабжения</p>
+          <div className={styles.contactBlock}>
+            <a href="tel:+79111695757" className={styles.contactPhone}>
+              +7 (921) 905-00-10 
+            </a>
+            <a href="mailto:Komarvm@yandex.ru" className={styles.contactEmail}>
+              snab@skkomkor.ru
             </a>
           </div>
         </div>

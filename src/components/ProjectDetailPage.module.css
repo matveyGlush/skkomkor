@@ -87,7 +87,7 @@
 
 .desc {
   font-family: "Maison Neue Mono", monospace;
-  font-size: 12.6px;
+  font-size: 15.6px;
   line-height: 1.6;
   color: #0b080d;
   max-width: 26rem;
@@ -95,7 +95,7 @@
 
 @media (min-width: 1024px) {
   .desc {
-    padding-left: 60px;
+    padding-left: 00px;
   }
 }
 

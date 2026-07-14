@@ -1,11 +1,11 @@
 .section {
-  padding: 4rem 1rem 5rem;
+  padding: 4rem 2rem 5rem;
   scroll-margin-top: 6rem;
 }
 
 @media (min-width: 768px) {
   .section {
-    padding: 6rem 15.75px 7rem 23.625px;
+    padding: 100px 15.75px 7rem 100px;
     scroll-margin-top: 261.45px;
   }
 }
@@ -28,6 +28,12 @@
   line-height: 1.2;
   color: #0b080d;
   margin: 0 0 0.75rem;
+}
+
+@media (min-width: 768px) {
+  .heading {
+    line-height: 90.72px;
+  }
 }
 
 .intro {
