@@ -16,7 +16,7 @@
   content: "";
   position: absolute;
   inset: 0;
-  background: rgba(11, 8, 13, 0.45);
+  background: rgba(11, 8, 13, 0.60);
   z-index: 1;
 }
 
