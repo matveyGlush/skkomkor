@@ -39,7 +39,7 @@ export function ContactPage() {
             Готовы рассмотреть проекты в&nbsp;других регионах страны.
           </p>
 
-          <div className={styles.contactLinks}>
+          {/* <div className={styles.contactLinks}>
             {[
               { href: "tel:+79111695757", label: "+7 (911) 169-57-57" },
               { href: "mailto:Komarvm@yandex.ru", label: "Komarvm@yandex.ru" },
@@ -49,7 +49,7 @@ export function ContactPage() {
                 <span className={styles.contactLinkLabel}>{label}</span>
               </a>
             ))}
-          </div>
+          </div> */}
 
           <p className={styles.snabDescription}>
             Отдел снабжения
