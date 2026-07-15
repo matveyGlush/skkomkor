@@ -20,7 +20,7 @@ export function ConsentPage() {
 
           <h2 className={styles.heading}>Оператор данных</h2>
           <p className={styles.paragraph}>
-            Обработку данных осуществляет СК «КОМКОР» (далее — Оператор).
+            Обработку данных осуществляет «КОМКОР» (далее — Оператор).
             Связаться с Оператором можно по телефону{" "}
             <a href="tel:+79111695757" className={styles.inlineLink}>
               +7 (911) 169-57-57
