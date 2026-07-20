@@ -3,9 +3,9 @@ import "./globals.css";
 import { SmoothScrollProvider } from "@/components/SmoothScrollProvider";
 
 export const metadata: Metadata = {
-  title: "Skkomkor — Architecture Agency",
+  title: "komkor — Строительная компания",
   description:
-    "Our architecture agency designs exceptional residences in rare locations, in France and around the world.",
+    "Профессиональные фасадные и реставрационные работы. Качество, надежность и внимание к каждой детали.",
 };
 
 export default function RootLayout({

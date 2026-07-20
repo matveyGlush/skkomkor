@@ -2,7 +2,6 @@
 
 import { useEffect, useRef } from "react";
 import Image from "next/image";
-import Link from "next/link";
 import { ArrowUpRightSmIcon } from "@/components/icons";
 import { useProjects } from "@/lib/useProjects";
 import type { Project } from "@/types/project";
@@ -15,7 +14,7 @@ function truncate(text: string, maxLength: number) {
 
 function ProjectCta({ href }: { href: string }) {
   return (
-    <Link href={href} className={styles.cta}>
+    <a href={href} className={styles.cta}>
       <span className={styles.ctaLabel}>ПОДРОБНЕЕ</span>
       <span className={styles.ctaIconWrapper}>
         <span className={styles.ctaIconTrack}>
@@ -27,7 +26,7 @@ function ProjectCta({ href }: { href: string }) {
           </span>
         </span>
       </span>
-    </Link>
+    </a>
   );
 }
 
@@ -40,15 +39,15 @@ function ProjectItem({
   thumbnailRef: (el: HTMLImageElement | null) => void;
   imageRef: (el: HTMLImageElement | null) => void;
 }) {
-  const href = `/projects/${project.slug}`;
+  const href = `/projects/${project.slug}/`;
 
   return (
     <div className={styles.projectItem}>
       <div className={styles.contentCol}>
         <div className={styles.head}>
-          <Link href={href}>
+          <a href={href}>
             <h2 className={styles.projectTitle}>{project.title}</h2>
-          </Link>
+          </a>
           <div className={styles.tags}>
             {project.tags.map((tag) => (
               <span key={tag} className={styles.tag}>{tag}</span>
@@ -57,7 +56,7 @@ function ProjectItem({
         </div>
 
         <div className={styles.bottom}>
-          <Link href={href} className={styles.thumbnail}>
+          <a href={href} className={styles.thumbnail}>
             {project.imageThumbUrl && (
               <Image
                 ref={thumbnailRef}
@@ -69,7 +68,7 @@ function ProjectItem({
                 alt={project.title}
               />
             )}
-          </Link>
+          </a>
 
           <div className={styles.descWrapper}>
             <p className={styles.desc}>{truncate(project.description, 120)}</p>
@@ -78,7 +77,7 @@ function ProjectItem({
         </div>
       </div>
 
-      <Link href={href} className={styles.imageCol}>
+      <a href={href} className={styles.imageCol}>
         {project.images[0] && (
           <Image
             ref={imageRef}
@@ -90,7 +89,7 @@ function ProjectItem({
             alt=""
           />
         )}
-      </Link>
+      </a>
     </div>
   );
 }

@@ -71,10 +71,10 @@ export function ProjectsSection() {
 
           <div>
             <p className={styles.featuredCaption}>{featured.description}</p>
-            <Link href={`/projects/${featured.slug}`} className={styles.featuredCta}>
+            <a href={`/projects/${featured.slug}/`} className={styles.featuredCta}>
               ПОДРОБНЕЕ
               <span aria-hidden="true">→</span>
-            </Link>
+            </a>
           </div>
         </div>
 
@@ -82,9 +82,9 @@ export function ProjectsSection() {
         <div className={styles.listWrapper}>
           <div className={styles.listCol}>
             {rest.map((project) => (
-              <Link
+              <a
                 key={project.slug}
-                href={`/projects/${project.slug}`}
+                href={`/projects/${project.slug}/`}
                 className={styles.projectRow}
               >
                 <span className={styles.projectName}>{project.title}</span>
@@ -95,7 +95,7 @@ export function ProjectsSection() {
                   </span>
                   <span className={styles.projectArrow} aria-hidden="true">↗</span>
                 </div>
-              </Link>
+              </a>
             ))}
 
             <div className={styles.allProjectsCta}>

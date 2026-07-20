@@ -6,7 +6,7 @@ import { cn } from "@/lib/utils";
 import styles from "./HeroSection.module.css";
 
 const slides = [
-  { src: "/images/hero-3.JPG", alt: "Luxury residence interior" },
+  { src: "/images/hero-3.webp", alt: "Luxury residence interior" },
 ];
 
 export function HeroSection() {
@@ -60,6 +60,8 @@ export function HeroSection() {
                 fill
                 style={{ objectFit: "cover" }}
                 priority={index === 0}
+                fetchPriority={index === 0 ? "high" : undefined}
+                sizes="100vw"
               />
             </div>
           </div>
@@ -79,10 +81,11 @@ export function HeroSection() {
       <div className={styles.smallImageContainer}>
         <div ref={smallParallaxRef} className={styles.smallParallaxLayer}>
           <Image
-            src={"/images/hero-5.JPG"}
+            src={"/images/hero-5.webp"}
             alt={"Luxury residence interior"}
             fill
             style={{ objectFit: "cover" }}
+            sizes="(max-width: 768px) 43vw, 33vw"
           />
         </div>
       </div>

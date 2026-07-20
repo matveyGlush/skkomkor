@@ -66,19 +66,21 @@ export function VisionSection() {
         <div className={styles.imageContainer1}>
           <Image
             ref={image1Ref}
-            src="/images/vision/vision-3.jpg"
+            src="/images/vision/vision-3.webp"
             fill
             className={`object-cover ${styles.parallaxImage}`}
             alt="Villa Elektra"
+            sizes="(max-width: 768px) 50vw, 25vw"
           />
         </div>
         <div className={styles.imageContainer2}>
           <Image
             ref={image2Ref}
-            src="/images/vision/vision-4.jpeg"
+            src="/images/vision/vision-4.webp"
             fill
             className={`object-cover ${styles.parallaxImage}`}
             alt="Villa Elektra"
+            sizes="(max-width: 768px) 50vw, 25vw"
           />
         </div>
       </div>

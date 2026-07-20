@@ -89,11 +89,11 @@ export function InspirationSection() {
       <div className={styles.hero} ref={heroRef}>
         <div className={styles.heroImageWrap} ref={heroImageWrapRef}>
           <Image
-            src="/images/hero-5.JPG"
+            src="/images/hero-5.webp"
             alt="Направления работ"
             fill
             className={styles.heroImage}
-            priority
+            sizes="100vw"
           />
         </div>
         <div className={styles.heroOverlay} />
