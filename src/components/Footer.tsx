@@ -36,6 +36,7 @@ export function Footer() {
               SK-KOMKOR@yandex.ru
             </a>
           </div>
+        </div>
 
         {/* Col 3: Location */}
         <div>
