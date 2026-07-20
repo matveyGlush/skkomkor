@@ -41,8 +41,8 @@ export function ContactPage() {
 
           {/* <div className={styles.contactLinks}>
             {[
-              { href: "tel:+79111695757", label: "+7 (911) 169-57-57" },
-              { href: "mailto:Komarvm@yandex.ru", label: "Komarvm@yandex.ru" },
+              { href: "tel:+79213644463", label: "+7 (921) 364-44-63" },
+              { href: "mailto:SK-KOMKOR@yandex.ru", label: "SK-KOMKOR@yandex.ru" },
             ].map(({ href, label }) => (
               <a key={label} href={href} className={styles.contactLink}>
                 <PlusIcon />
@@ -50,10 +50,6 @@ export function ContactPage() {
               </a>
             ))}
           </div> */}
-
-          <p className={styles.snabDescription}>
-            Отдел снабжения
-          </p>
 
           <div className={styles.snabLinks}>
             {[

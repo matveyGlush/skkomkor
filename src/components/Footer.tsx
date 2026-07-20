@@ -29,24 +29,13 @@ export function Footer() {
         <div>
           <p className={styles.colLabel}>Контакты</p>
           <div className={styles.contactBlock}>
-            <a href="tel:+79111695757" className={styles.contactPhone}>
-              +7 (911) 169-57-57
+            <a href="tel:+79213644463" className={styles.contactPhone}>
+              +7 (921) 364-44-63
             </a>
-            <a href="mailto:Komarvm@yandex.ru" className={styles.contactEmail}>
-              Komarvm@yandex.ru
-            </a>
-          </div>
-
-          <p className={styles.colLabel}>Отдел снабжения</p>
-          <div className={styles.contactBlock}>
-            <a href="tel:+79111695757" className={styles.contactPhone}>
-              +7 (921) 905-00-10 
-            </a>
-            <a href="mailto:Komarvm@yandex.ru" className={styles.contactEmail}>
-              snab@skkomkor.ru
+            <a href="mailto:SK-KOMKOR@yandex.ru" className={styles.contactEmail}>
+              SK-KOMKOR@yandex.ru
             </a>
           </div>
-        </div>
 
         {/* Col 3: Location */}
         <div>

@@ -22,12 +22,12 @@ export function ConsentPage() {
           <p className={styles.paragraph}>
             Обработку данных осуществляет «КОМКОР» (далее — Оператор).
             Связаться с Оператором можно по телефону{" "}
-            <a href="tel:+79111695757" className={styles.inlineLink}>
-              +7 (911) 169-57-57
+            <a href="tel:+79213644463" className={styles.inlineLink}>
+              +7 (921) 364-44-63
             </a>{" "}
             или по электронной почте{" "}
-            <a href="mailto:Komarvm@yandex.ru" className={styles.inlineLink}>
-              Komarvm@yandex.ru
+            <a href="mailto:SK-KOMKOR@yandex.ru" className={styles.inlineLink}>
+              SK-KOMKOR@yandex.ru
             </a>
             .
           </p>

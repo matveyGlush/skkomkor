@@ -60,8 +60,8 @@ export function PrivacyPage() {
             данных, потребовать их уточнения, блокирования или уничтожения,
             а также отозвать согласие на обработку, направив обращение на
             электронную почту{" "}
-            <a href="mailto:Komarvm@yandex.ru" className={styles.inlineLink}>
-              Komarvm@yandex.ru
+            <a href="mailto:SK-KOMKOR@yandex.ru" className={styles.inlineLink}>
+              SK-KOMKOR@yandex.ru
             </a>
             .
           </p>
