@@ -1,8 +1,8 @@
 <?php
 // Public contact-form endpoint. POST { name, contact, message } (all
 // strings) and it emails the submission to CONTACT_TO_EMAIL below. No
-// password required — this is meant to be called from the public site's
-// contact form via the Next.js /api/contact route.
+// password required — this is called directly from the public site's
+// contact form (client-side fetch, see src/components/ContactForm.tsx).
 
 header('Access-Control-Allow-Origin: *');
 header('Access-Control-Allow-Methods: POST, OPTIONS');

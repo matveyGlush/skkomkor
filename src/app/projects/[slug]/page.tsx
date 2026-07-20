@@ -1,41 +1,14 @@
 import { notFound } from "next/navigation";
-import { AppHeader } from "@/components/AppHeader";
-import { ProjectDetailPage } from "@/components/ProjectDetailPage";
-import { Footer } from "@/components/Footer";
-import { MainTitle } from "@/components/MainTitle";
-import { getProjectBySlug } from "@/lib/projects";
 
-export const dynamic = "force-dynamic";
-
-export async function generateMetadata({
-  params,
-}: PageProps<"/projects/[slug]">) {
-  const { slug } = await params;
-  const project = await getProjectBySlug(slug);
-
-  return {
-    title: project ? `Skkomkor — ${project.title}` : "Skkomkor — Projects",
-  };
+// Projects are added/edited live via /admin, so slugs aren't known at build
+// time. "output: export" requires at least one static param per dynamic
+// segment, so we emit a single unused placeholder page; real slugs 404 and
+// are served by the site's 404 fallback (see not-found.tsx), which fetches
+// and renders the project client-side by reading the slug from the URL.
+export function generateStaticParams() {
+  return [{ slug: "_" }];
 }
 
-export default async function ProjectPage({
-  params,
-}: PageProps<"/projects/[slug]">) {
-  const { slug } = await params;
-  const project = await getProjectBySlug(slug);
-
-  if (!project) {
-    notFound();
-  }
-
-  return (
-    <>
-      <MainTitle />
-      <AppHeader />
-      <main>
-        <ProjectDetailPage project={project} />
-      </main>
-      <Footer />
-    </>
-  );
+export default function ProjectPage(): never {
+  notFound();
 }

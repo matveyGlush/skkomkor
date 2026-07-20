@@ -4,6 +4,7 @@ import { useEffect, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRightSmIcon } from "@/components/icons";
+import { useProjects } from "@/lib/useProjects";
 import type { Project } from "@/types/project";
 import styles from "./ProjectsListPage.module.css";
 
@@ -94,7 +95,8 @@ function ProjectItem({
   );
 }
 
-export function ProjectsListPage({ projects }: { projects: Project[] }) {
+export function ProjectsListPage() {
+  const projects = useProjects();
   const imageRefs = useRef<(HTMLImageElement | null)[]>([]);
   const thumbnailRefs = useRef<(HTMLImageElement | null)[]>([]);
 

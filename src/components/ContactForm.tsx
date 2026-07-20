@@ -3,6 +3,8 @@
 import { useState, type ChangeEvent, type FormEvent } from "react";
 import styles from "./ContactForm.module.css";
 
+const CONTACT_API_URL = process.env.NEXT_PUBLIC_CONTACT_API_URL;
+
 type Status = "idle" | "submitting" | "success" | "error";
 
 function formatPhone(value: string): string {
@@ -46,9 +48,14 @@ export function ContactForm() {
       message: (form.elements.namedItem("message") as HTMLTextAreaElement).value,
     };
 
+    if (!CONTACT_API_URL) {
+      setStatus("error");
+      return;
+    }
+
     setStatus("submitting");
     try {
-      const res = await fetch("/api/contact", {
+      const res = await fetch(CONTACT_API_URL, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),

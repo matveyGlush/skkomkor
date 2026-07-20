@@ -4,15 +4,16 @@ import { useEffect, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRightSmIcon } from "@/components/icons";
-import type { Project } from "@/types/project";
+import { useProjects } from "@/lib/useProjects";
 import styles from "./ProjectsSection.module.css";
 
 function stripBrackets(tag: string) {
   return tag.replace(/^\[\s*/, "").replace(/\s*\]$/, "");
 }
 
-export function ProjectsSection({ projects }: { projects: Project[] }) {
-  const [featured, ...rest] = projects;
+export function ProjectsSection() {
+  const projects = useProjects();
+  const [featured, ...rest] = projects.slice(0, 12);
   const sectionRef = useRef<HTMLDivElement | null>(null);
   const imageContainerRef = useRef<HTMLDivElement | null>(null);
   const parallaxRef = useRef<HTMLDivElement | null>(null);
