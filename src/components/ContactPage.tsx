@@ -57,8 +57,8 @@ export function ContactPage() {
 
           <div className={styles.snabLinks}>
             {[
-              { href: "tel:+79219050010", label: "+7 (921) 905-00-10" },
-              { href: "mailto:snab@skkomkor.ru", label: "snab@skkomkor.ru" },
+              { href: "tel:+79213644463", label: "+7 (921) 364-44-63" },
+              { href: "mailto:SK-KOMKOR@yandex.ru", label: "SK-KOMKOR@yandex.ru" },
             ].map(({ href, label }) => (
               <a key={label} href={href} className={styles.contactLink}>
                 <PlusIcon />
